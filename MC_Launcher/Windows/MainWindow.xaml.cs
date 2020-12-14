@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -12,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Media.Animation;
 
 namespace MC_Launcher
 {
@@ -35,6 +35,16 @@ namespace MC_Launcher
             System.Diagnostics.Process.Start(e.Uri.AbsoluteUri);
         }
 
+        private void LoginBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Storyboard sb = Resources["LoginBtn"] as Storyboard;
+            sb.Begin(SlidePanel);
+        }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Storyboard sb = Resources["BackLogin"] as Storyboard;
+            sb.Begin(SlidePanel);
+        }
     }
 }
