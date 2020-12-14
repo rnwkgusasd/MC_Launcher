@@ -1,0 +1,63 @@
+﻿<Window xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"  x:Class="MC_Launcher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MC_Launcher"
+        mc:Ignorable="d"
+        Title="MC - Launcher" Height="800" Width="1200" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="#FF383838" FontFamily="Manrope">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PasswordBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.CheckBox.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <Grid x:Name="DragPoint" Height="100" Width="1200" VerticalAlignment="Top" Background="#FF383838"
+               MouseDown="DragPoint_MouseDown">
+
+            <Button Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0, 10, 10, 0" Foreground="White" Background="#FFFB1A1A"
+                    Style="{StaticResource MaterialDesignFloatingActionButton}" BorderBrush="#00707070" />
+            <Button Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0, 10, 40, 0" Foreground="White" Background="#FFA0A0A0"
+                    Style="{StaticResource MaterialDesignFloatingActionButton}" BorderBrush="#00707070" />
+            <Button Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0, 10, 70, 0" Foreground="White" Background="#FF474747"
+                    Style="{StaticResource MaterialDesignFloatingActionButton}" BorderBrush="#00707070" />
+        </Grid>
+        <Grid Height="500" Width="900" Margin="40, 50, 0, 0">
+            <Border CornerRadius="20" Background="#FF1F1E1E"/>
+        </Grid>
+        <Grid Height="500" Width="900">
+            <Border CornerRadius="20"  Background="#FFE0E0E0">
+                <Grid>
+                    <Border Width="350" Height="50" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 160, 50" Background="LightGray" CornerRadius="5"/>
+                    <Border Width="350" Height="50" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 70, 160, 0" Background="LightGray" CornerRadius="5"/>
+                    <Border Width="100" Height="110" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 10, 35, 0" Background="#FF5078BF" CornerRadius="2"/>
+                    <TextBox Width="350" Height="50" materialDesign:HintAssist.Hint="ID" HorizontalAlignment="Right" VerticalAlignment="Center"
+                        Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" SelectionBrush="Gray" Margin="0, 0, 170, 60" Background="#FFE8E8E8" FontFamily="Manrope" />
+                    <PasswordBox Width="350" Height="50" materialDesign:HintAssist.Hint="PASSWORD" HorizontalAlignment="Right" VerticalAlignment="Center"
+                        Style="{StaticResource MaterialDesignOutlinedPasswordFieldPasswordBox}" SelectionBrush="Gray" Margin="0, 60, 170, 0" Background="#FFE8E8E8" />
+                    <Button Width="100" Height="110" HorizontalAlignment="Right" Margin="0, 0, 40, 0" Background="#FF5A8CE4" 
+                        Style="{StaticResource MaterialDesignFlatMidBgButton}" BorderBrush="{x:Null}" Content="▶" Foreground="#FFF1F1F1" FontSize="32"/>
+                    <CheckBox Height="30" Width="70" HorizontalAlignment="Center" Margin="500, 170, 0, 0" Content="Save ID"
+                        Style="{StaticResource MaterialDesignAccentCheckBox}" Background="#FFF90707" Foreground="#FF555555" />
+                    <TextBlock Width="55" Height="20" Margin="520, 240, 0, 0" Foreground="#FF5866F9">
+                        <Hyperlink RequestNavigate="HyperLink_RequestNavigate" NavigateUri="https://naver.com" TextDecorations="{x:Null}" >
+                            <Run Text="Sign-up" />
+                        </Hyperlink>
+                    </TextBlock>
+                    <TextBlock Width="130" Height="20" Margin="420,280,0,0" Foreground="#FF5866F9" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Hyperlink RequestNavigate="HyperLink_RequestNavigate" NavigateUri="https://naver.com" TextDecorations="{x:Null}" >
+                            <Run Text="Forgot ID or PASSWORD"/>
+                        </Hyperlink>
+                    </TextBlock>
+                    <Image x:Name="___MC_Launcher_component_logo03_png" Margin="65,170,619,150" Source="/MC_Launcher;component/logo03.png" Stretch="Fill"/>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>
