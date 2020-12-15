@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MC_Launcher" xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="MC - Launcher" Height="800" Width="1200" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="#FF383838" FontFamily="Manrope">
+        Title="MC - Launcher" Height="700" Width="1100" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="#FF383838" FontFamily="Manrope">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -15,28 +15,28 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.CheckBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <Storyboard x:Key="LoginBtn">
-                <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0, 100, 0, 0" To="-1020, 100, 0, 0" DecelerationRatio=".9" Duration="0:0:1"/>
+                <ThicknessAnimation Storyboard.TargetProperty="Margin" From="75, 30, 0, 0" To="-955, 30, 0, 0" DecelerationRatio=".9" Duration="0:0:1"/>
             </Storyboard>
             <Storyboard x:Key="BackLogin">
-                <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-1020, 100, 0, 0" To="100, 100, 0, 0" DecelerationRatio=".9" Duration="0:0:1"/>
+                <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-955, 30, 0, 0" To="75, 30, 0, 0" DecelerationRatio=".9" Duration="0:0:1"/>
             </Storyboard>
         </ResourceDictionary>
     </Window.Resources>
 
     <Grid>
-        <Grid x:Name="DragPoint" Height="100" Width="1200" VerticalAlignment="Top" Background="#FF383838"
+        <Grid x:Name="DragPoint" Height="60" VerticalAlignment="Top" Background="#FF383838"
                MouseDown="DragPoint_MouseDown">
 
             <Button Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0, 10, 10, 0" Foreground="White" Background="#FFFB1A1A"
-                    Style="{StaticResource MaterialDesignFloatingActionButton}" BorderBrush="#00707070" />
+                    Style="{StaticResource MaterialDesignFloatingActionButton}" BorderBrush="#00707070" Click="Button_Click_1" />
             <Button Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0, 10, 40, 0" Foreground="White" Background="#FFA0A0A0"
-                    Style="{StaticResource MaterialDesignFloatingActionButton}" BorderBrush="#00707070" />
+                    Style="{StaticResource MaterialDesignFloatingActionButton}" BorderBrush="#00707070" Click="Button_Click_2" />
             <Button Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0, 10, 70, 0" Foreground="White" Background="#FF474747"
-                    Style="{StaticResource MaterialDesignFloatingActionButton}" BorderBrush="#00707070" />
+                    Style="{StaticResource MaterialDesignFloatingActionButton}" BorderBrush="#00707070" Click="Button_Click_3" />
         </Grid>
         
-        <StackPanel Panel.ZIndex="2" Name="SlidePanel" Orientation="Horizontal" Margin="100,150,-2479,50" Height="600">
-            <Grid>
+        <StackPanel Panel.ZIndex="2" Name="SlidePanel" Orientation="Horizontal" Margin="75,80,-2479,50" Height="600" VerticalAlignment="Center" HorizontalAlignment="Left">
+            <Grid Width="950" Height="550">
                 <Grid x:Name="Login_Panel_Shadow" Height="500" Width="900" Margin="40, 50, 0, 0">
                     <Border CornerRadius="20" Background="#FF1F1E1E"/>
                 </Grid>
@@ -72,14 +72,14 @@
                 </Grid>
             </Grid>
 
-            <Grid>
-                <Grid Height="500" Width="900" Margin="240, 50, 0, 0">
+            <Grid Width="950" Height="550" Margin="80, 0, 0, 0">
+                <Grid Height="500" Width="900" Margin="0, 0, 0, 0">
                     <Border CornerRadius="20" Background="#FF1F1E1E"/>
                 </Grid>
-                <Grid Width="900" Height="500" Margin="200, 0, 0, 0">
+                <Grid Width="900" Height="500" Margin="0, 0, 0, 0">
                     <Border CornerRadius="20" Background="#FFE0E0E0">
                         <Grid>
-                            <Button Content="btn" Click="Button_Click" />
+                            <Button Width="100" Height="50" Content="btn" Click="Button_Click" />
                         </Grid>
                     </Border>
                 </Grid>
