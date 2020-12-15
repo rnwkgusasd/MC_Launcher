@@ -37,12 +37,27 @@ namespace MC_Launcher
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
+            if(ID.Text != "" && PWD.Password != "")
+            {
+                
+            }
+            else
+            {
+                return;
+            }
+
             Storyboard sb = Resources["LoginBtn"] as Storyboard;
             sb.Begin(SlidePanel);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if(IDsave.IsChecked == null || IDsave.IsChecked == false)
+            {
+                ID.Text = "";
+            }
+            PWD.Password = "";
+
             Storyboard sb = Resources["BackLogin"] as Storyboard;
             sb.Begin(SlidePanel);
         }

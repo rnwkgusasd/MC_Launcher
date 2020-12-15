@@ -47,13 +47,13 @@
                                 <Border Width="350" Height="50" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 160, 50" Background="LightGray" CornerRadius="5"/>
                                 <Border Width="350" Height="50" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 70, 160, 0" Background="LightGray" CornerRadius="5"/>
                                 <Border Width="100" Height="110" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 10, 35, 0" Background="#FF5078BF" CornerRadius="2"/>
-                                <TextBox Width="350" Height="50" materialDesign:HintAssist.Hint="ID" HorizontalAlignment="Right" VerticalAlignment="Center"
-                                    Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" SelectionBrush="Gray" Margin="0, 0, 170, 60" Background="#FFE8E8E8" FontFamily="Manrope" />
-                                <PasswordBox Width="350" Height="50" materialDesign:HintAssist.Hint="PASSWORD" HorizontalAlignment="Right" VerticalAlignment="Center"
-                                    Style="{StaticResource MaterialDesignOutlinedPasswordFieldPasswordBox}" SelectionBrush="Gray" Margin="0, 60, 170, 0" Background="#FFE8E8E8" />
+                                <TextBox x:Name="ID" Width="350" Height="50" materialDesign:HintAssist.Hint="ID" HorizontalAlignment="Right" VerticalAlignment="Center"
+                                    Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" SelectionBrush="Gray" Margin="0, 0, 170, 60" Background="#FFE8E8E8" FontFamily="Manrope" FontSize="16" />
+                                <PasswordBox x:Name="PWD" Width="350" Height="50" materialDesign:HintAssist.Hint="PASSWORD" HorizontalAlignment="Right" VerticalAlignment="Center"
+                                    Style="{StaticResource MaterialDesignOutlinedPasswordFieldPasswordBox}" SelectionBrush="Gray" Margin="0, 60, 170, 0" Background="#FFE8E8E8" FontSize="16" />
                                 <Button x:Name="LoginBtn" Width="100" Height="110" HorizontalAlignment="Right" Margin="0, 0, 40, 0" Background="#FF5A8CE4" 
                                     Style="{StaticResource MaterialDesignFlatMidBgButton}" BorderBrush="{x:Null}" Content="▶" Foreground="#FFF1F1F1" FontSize="32" Click="LoginBtn_Click" />
-                                <CheckBox Height="30" Width="70" HorizontalAlignment="Center" Margin="500, 170, 0, 0" Content="Save ID"
+                                <CheckBox x:Name="IDsave" Height="30" Width="70" HorizontalAlignment="Center" Margin="500, 170, 0, 0" Content="Save ID"
                                     Style="{StaticResource MaterialDesignAccentCheckBox}" Background="#FFF90707" Foreground="#FF555555" />
                                 <TextBlock Width="55" Height="20" Margin="520, 240, 0, 0" Foreground="#FF5866F9">
                                     <Hyperlink RequestNavigate="HyperLink_RequestNavigate" NavigateUri="https://naver.com" TextDecorations="{x:Null}" >
@@ -73,13 +73,36 @@
             </Grid>
 
             <Grid Width="950" Height="550" Margin="80, 0, 0, 0">
-                <Grid Height="500" Width="900" Margin="0, 0, 0, 0">
+                <Grid Height="500" Width="900" Margin="40, 50, 0, 0">
                     <Border CornerRadius="20" Background="#FF1F1E1E"/>
                 </Grid>
                 <Grid Width="900" Height="500" Margin="0, 0, 0, 0">
                     <Border CornerRadius="20" Background="#FFE0E0E0">
                         <Grid>
-                            <Button Width="100" Height="50" Content="btn" Click="Button_Click" />
+                            <Button Width="30" Height="30" Click="Button_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20, 20, 0, 0" BorderThickness="0"
+                                    Style="{StaticResource MaterialDesignFlatAccentBgButton}">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="back_to_50px.png"/>
+                                </Button.Background>
+                            </Button>
+
+                            <Grid Width="850" Height="380" Margin="0, 30, 0, 0">
+                                <Button VerticalAlignment="Center" HorizontalAlignment="Left" Width="430" Height="350"
+                                    Style="{StaticResource MaterialDesignFlatAccentBgButton}" Background="#FFD5E2F9">
+                                    1
+                                </Button>
+
+                                <Button VerticalAlignment="Center" HorizontalAlignment="Right" Width="400" Height="160" Margin="0, -190, 0, 0"
+                                    Style="{StaticResource MaterialDesignFlatAccentBgButton}" Background="#FFDDD3FF">
+                                    2
+                                </Button>
+
+                                <Button VerticalAlignment="Center" HorizontalAlignment="Right" Width="400" Height="160" Margin="0, 190, 0, 0"
+                                    Style="{StaticResource MaterialDesignFlatAccentBgButton}" Background="#FFD0FFF4">
+                                    3
+                                </Button>
+                            </Grid>
+                            
                         </Grid>
                     </Border>
                 </Grid>
