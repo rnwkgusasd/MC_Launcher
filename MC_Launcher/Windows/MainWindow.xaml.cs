@@ -23,6 +23,9 @@ namespace MC_Launcher
         public MainWindow()
         {
             InitializeComponent();
+
+            Source.AccessAPI m = new Source.AccessAPI();
+            m.GetUUID("");
         }
 
         private void DragPoint_MouseDown(object sender, MouseButtonEventArgs e)

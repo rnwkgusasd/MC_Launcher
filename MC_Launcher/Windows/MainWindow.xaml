@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MC_Launcher" xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:MC_Launcher" xmlns:system="clr-namespace:System;assembly=mscorlib" xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
         Title="MC - Launcher" Height="700" Width="1100" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="#FF383838" FontFamily="Manrope">
     <Window.Resources>
@@ -102,7 +102,7 @@
                                     3
                                 </Button>
                             </Grid>
-                            
+                            <fa:ImageAwesome Width="50" Height="50" Icon="CircleOutlineNotch" Spin="True" SpinDuration="4" />
                         </Grid>
                     </Border>
                 </Grid>
