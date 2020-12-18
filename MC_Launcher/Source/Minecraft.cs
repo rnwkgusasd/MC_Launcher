@@ -19,14 +19,18 @@ namespace MC_Launcher.Source
         private int port = 0;
         private int ram = 4096;
 
+        public string USERNAME { get { return se.Username; } }
+        public string UUID { get { return se.UUID; } }
+
         public Minecraft()
         {
 
         }
 
+        private MLogin login = new MLogin();
+
         public bool Login(string email, string pwd)
         {
-            var login = new MLogin();
             //var rsp = login.TryAutoLogin();
             var rsp = login.Authenticate(email, pwd);
 
@@ -36,7 +40,7 @@ namespace MC_Launcher.Source
             }
 
             se = rsp.Session;
-
+            
             return true;
         }
 

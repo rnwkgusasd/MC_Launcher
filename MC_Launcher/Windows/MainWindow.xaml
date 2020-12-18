@@ -36,7 +36,7 @@
         </Grid>
         
         <StackPanel Panel.ZIndex="2" Name="SlidePanel" Orientation="Horizontal" Margin="75,80,-2479,50" Height="600" VerticalAlignment="Center" HorizontalAlignment="Left">
-            <Grid Width="950" Height="550">
+            <Grid x:Name="loginGrid" Width="950" Height="550">
                 <Grid x:Name="Login_Panel_Shadow" Height="500" Width="900" Margin="40, 50, 0, 0">
                     <Border CornerRadius="20" Background="#FF1F1E1E"/>
                 </Grid>
@@ -66,13 +66,16 @@
                                     </Hyperlink>
                                 </TextBlock>
                                 <Image x:Name="___MC_Launcher_component_logo03_png" Margin="65,170,619,150" Source="/MC_Launcher;component/logo03.png" Stretch="Fill"/>
+                                <Border x:Name="loadingLogin" CornerRadius="20" Background="#B2000000" Visibility="Hidden">
+                                    <fa:ImageAwesome Width="50" Height="50" Icon="CircleOutlineNotch" Spin="True" SpinDuration="4" Foreground="#FF3ED1D1" />
+                                </Border>
                             </Grid>
                         </Border>
                     </Grid>
                 </Grid>
             </Grid>
 
-            <Grid Width="950" Height="550" Margin="80, 0, 0, 0">
+            <Grid x:Name="gameMenuGrid" Width="950" Height="550" Margin="80, 0, 0, 0" >
                 <Grid Height="500" Width="900" Margin="40, 50, 0, 0">
                     <Border CornerRadius="20" Background="#FF1F1E1E"/>
                 </Grid>
@@ -87,10 +90,7 @@
                             </Button>
 
                             <Grid Width="850" Height="380" Margin="0, 30, 0, 0">
-                                <Button VerticalAlignment="Center" HorizontalAlignment="Left" Width="430" Height="350"
-                                    Style="{StaticResource MaterialDesignFlatAccentBgButton}" Background="#FFD5E2F9">
-                                    1
-                                </Button>
+                                <Image x:Name="imgSkin" VerticalAlignment="Center" HorizontalAlignment="Left" Width="430" Height="350" />
 
                                 <Button VerticalAlignment="Center" HorizontalAlignment="Right" Width="400" Height="160" Margin="0, -190, 0, 0"
                                     Style="{StaticResource MaterialDesignFlatAccentBgButton}" Background="#FFDDD3FF">
@@ -102,7 +102,6 @@
                                     3
                                 </Button>
                             </Grid>
-                            <fa:ImageAwesome Width="50" Height="50" Icon="CircleOutlineNotch" Spin="True" SpinDuration="4" />
                         </Grid>
                     </Border>
                 </Grid>
