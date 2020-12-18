@@ -46,7 +46,7 @@ namespace MC_Launcher.Source
             try
             {
                 WebClient downloader = new WebClient();
-                Stream st = downloader.OpenRead($"https://mc-heads.net/body/{uuid}/left");
+                Stream st = downloader.OpenRead($"https://mc-heads.net/body/{uuid}/right");
                 Bitmap img = Bitmap.FromStream(st) as Bitmap;
 
                 var handle = img.GetHbitmap();

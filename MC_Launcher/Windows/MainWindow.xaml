@@ -20,6 +20,12 @@
             <Storyboard x:Key="BackLogin">
                 <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-955, 30, 0, 0" To="75, 30, 0, 0" DecelerationRatio=".9" Duration="0:0:1"/>
             </Storyboard>
+            <Storyboard x:Key="Setup">
+                <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-955, 30, 0, 0" To="-2065, 30, 0, 0" DecelerationRatio=".9" Duration="0:0:1"/>
+            </Storyboard>
+            <Storyboard x:Key="BackMenu">
+                <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-2065, 30, 0, 0" To="-955, 30, 0, 0" DecelerationRatio=".9" Duration="0:0:1"/>
+            </Storyboard>
         </ResourceDictionary>
     </Window.Resources>
 
@@ -88,25 +94,48 @@
                                     <ImageBrush ImageSource="back_to_50px.png"/>
                                 </Button.Background>
                             </Button>
-
-                            <Grid Width="850" Height="380" Margin="0, 30, 0, 0">
-                                <Image x:Name="imgSkin" VerticalAlignment="Center" HorizontalAlignment="Left" Width="430" Height="350" />
-
-                                <Button VerticalAlignment="Center" HorizontalAlignment="Right" Width="400" Height="160" Margin="0, -190, 0, 0"
-                                    Style="{StaticResource MaterialDesignFlatAccentBgButton}" Background="#FFDDD3FF">
-                                    2
-                                </Button>
-
-                                <Button VerticalAlignment="Center" HorizontalAlignment="Right" Width="400" Height="160" Margin="0, 190, 0, 0"
-                                    Style="{StaticResource MaterialDesignFlatAccentBgButton}" Background="#FFD0FFF4">
-                                    3
-                                </Button>
+                            <Grid Margin="0, 70, 0, 20" Background="#FFDFF9FF">
+                                <Grid Width="30" Height="30" VerticalAlignment="Top" HorizontalAlignment="Right"
+                                        Margin="10">
+                                    <Border CornerRadius="10" Background="White"/>
+                                    <Button Style="{StaticResource MaterialDesignFlatAccentBgButton}" Click="Setup_Click">
+                                        <Button.Background>
+                                            <ImageBrush ImageSource="settings_50px.png"/>
+                                        </Button.Background>
+                                    </Button>
+                                </Grid>
                             </Grid>
                         </Grid>
                     </Border>
                 </Grid>
             </Grid>
-            
+
+            <Grid x:Name="gameSetupGrid" Width="950" Height="550" Margin="160, 0, 0, 0" >
+                <Grid Height="500" Width="900" Margin="40, 50, 0, 0">
+                    <Border CornerRadius="20" Background="#FF1F1E1E"/>
+                </Grid>
+                <Grid Width="900" Height="500" Margin="0, 0, 0, 0">
+                    <Border CornerRadius="20" Background="#FFE0E0E0">
+                        <Grid>
+                            <Button Width="30" Height="30" Click="BackMenu_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20, 20, 0, 0" BorderThickness="0"
+                                    Style="{StaticResource MaterialDesignFlatAccentBgButton}">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="back_to_50px.png"/>
+                                </Button.Background>
+                            </Button>
+
+                            <Grid Width="850" Height="380" Margin="0, 30, 0, 0">
+                                <Border Width="250" Height="350" VerticalAlignment="Center" HorizontalAlignment="Left"
+                                        CornerRadius="8" Background="#FFF0F0F0">
+                                    <Image x:Name="imgSkin" Margin="20" />
+                                </Border>
+
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+
         </StackPanel>
     </Grid>
 </Window>

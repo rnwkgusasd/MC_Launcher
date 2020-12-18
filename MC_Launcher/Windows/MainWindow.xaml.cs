@@ -53,8 +53,11 @@ namespace MC_Launcher
                 bw.DoWork += new DoWorkEventHandler(DoLogin);
                 bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(LoginSuccess);
 
-                bw.RunWorkerAsync();
-                loadingLogin.Visibility = Visibility.Visible;
+                //bw.RunWorkerAsync();
+                //loadingLogin.Visibility = Visibility.Visible;
+
+                Storyboard sb = Resources["LoginBtn"] as Storyboard;
+                sb.Begin(SlidePanel);
             }
             else
             {
@@ -97,6 +100,18 @@ namespace MC_Launcher
             PWD.Password = "";
 
             Storyboard sb = Resources["BackLogin"] as Storyboard;
+            sb.Begin(SlidePanel);
+        }
+
+        private void Setup_Click(object sender, RoutedEventArgs e)
+        {
+            Storyboard sb = Resources["Setup"] as Storyboard;
+            sb.Begin(SlidePanel);
+        }
+
+        private void BackMenu_Click(object sender, RoutedEventArgs e)
+        {
+            Storyboard sb = Resources["BackMenu"] as Storyboard;
             sb.Begin(SlidePanel);
         }
 
