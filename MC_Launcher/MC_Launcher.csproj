@@ -139,6 +139,9 @@
   <ItemGroup>
     <Resource Include="Windows\settings_50px.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="mcicon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
