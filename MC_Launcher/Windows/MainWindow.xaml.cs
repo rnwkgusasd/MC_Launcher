@@ -44,7 +44,7 @@ namespace MC_Launcher
 
         private BackgroundWorker bw = new BackgroundWorker();
 
-        private void LoginBtn_Click(object sender, RoutedEventArgs e)
+        private async void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
             if (ID.Text != "" && PWD.Password != "")
             {
@@ -53,11 +53,26 @@ namespace MC_Launcher
                 bw.DoWork += new DoWorkEventHandler(DoLogin);
                 bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(LoginSuccess);
 
-                //bw.RunWorkerAsync();
-                //loadingLogin.Visibility = Visibility.Visible;
+                var doit = Task.Run(() =>
+                {
+                    this.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
+                    {
+                        if (!mine.Login(ID.Text, PWD.Password)) return;
+                        else imgSkin.Source = api.GetSkinFromAPI(mine.UUID);
+                    }));
+                });
+
+                await doit;
 
                 Storyboard sb = Resources["LoginBtn"] as Storyboard;
                 sb.Begin(SlidePanel);
+                loadingLogin.Visibility = Visibility.Hidden;
+
+                //bw.RunWorkerAsync();
+                //loadingLogin.Visibility = Visibility.Visible;
+
+                //Storyboard sb = Resources["LoginBtn"] as Storyboard;
+                //sb.Begin(SlidePanel);
             }
             else
             {
