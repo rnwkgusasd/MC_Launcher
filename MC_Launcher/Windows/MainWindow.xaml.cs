@@ -42,67 +42,26 @@ namespace MC_Launcher
         public Source.AccessAPI api = new Source.AccessAPI();
         public Source.Minecraft mine = new Source.Minecraft();
 
-        private BackgroundWorker bw = new BackgroundWorker();
-
-        private async void LoginBtn_Click(object sender, RoutedEventArgs e)
+        private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
             if (ID.Text != "" && PWD.Password != "")
             {
-                bw.WorkerReportsProgress = true;
-                bw.WorkerSupportsCancellation = true;
-                bw.DoWork += new DoWorkEventHandler(DoLogin);
-                bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(LoginSuccess);
+                loadingLogin.Visibility = Visibility.Visible;
 
-                var doit = Task.Run(() =>
+                if (!mine.Login(ID.Text, PWD.Password))
                 {
-                    this.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
-                    {
-                        if (!mine.Login(ID.Text, PWD.Password)) return;
-                        else imgSkin.Source = api.GetSkinFromAPI(mine.UUID);
-                    }));
-                });
-
-                await doit;
+                    //loadingLogin.Visibility = Visibility.Hidden;
+                    //return;
+                }
+                else imgSkin.Source = api.GetSkinFromAPI(mine.UUID);
 
                 Storyboard sb = Resources["LoginBtn"] as Storyboard;
                 sb.Begin(SlidePanel);
                 loadingLogin.Visibility = Visibility.Hidden;
-
-                //bw.RunWorkerAsync();
-                //loadingLogin.Visibility = Visibility.Visible;
-
-                //Storyboard sb = Resources["LoginBtn"] as Storyboard;
-                //sb.Begin(SlidePanel);
             }
             else
             {
                 return;
-            }
-        }
-
-        private void DoLogin(object sender, DoWorkEventArgs e)
-        {
-            this.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
-            {
-                if (!mine.Login(ID.Text, PWD.Password)) e.Cancel = true;
-                else imgSkin.Source = api.GetSkinFromAPI(mine.UUID);
-            }));
-        }
-
-        private void LoginSuccess(object sender, RunWorkerCompletedEventArgs e)
-        {
-            if(e.Cancelled)
-            {
-                loadingLogin.Visibility = Visibility.Hidden;
-            }
-            else
-            {
-                this.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
-                {
-                    Storyboard sb = Resources["LoginBtn"] as Storyboard;
-                    sb.Begin(SlidePanel);
-                    loadingLogin.Visibility = Visibility.Hidden;
-                }));
             }
         }
 
