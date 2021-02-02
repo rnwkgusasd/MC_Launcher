@@ -27,6 +27,7 @@ namespace MC_Launcher
         public MainWindow()
         {
             InitializeComponent();
+            // https://www.wpf-tutorial.com/tabcontrol/styling-the-tabitems/ custom grid
         }
 
         private void DragPoint_MouseDown(object sender, MouseButtonEventArgs e)
