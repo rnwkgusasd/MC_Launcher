@@ -109,7 +109,7 @@
                                     <Image Width="300" Height="200" VerticalAlignment="Top" Source="/MC_Launcher;component/mcicon.png" />
                                     <TextBlock Width="400" Height="50" Margin="0, 120, 0, 0" TextAlignment="Center" FontWeight="Bold" FontSize="36" FontFamily="Manrope">MINECRAFT SERVER</TextBlock>
                                     <Border Width="280" Height="50" Margin="0, 250, 0 , 0" CornerRadius="20" Background="White" />
-                                    <ComboBox Width="250" Height="40" Margin="0, 250, 0, 0" FontSize="24" Background="{x:Null}" 
+                                    <ComboBox Width="250" Height="40" Margin="0, 250, 0, 0" FontSize="24" Background="White" 
                                               Style="{StaticResource MaterialDesignFilledComboBox}" Padding="15,-10,0,0">
                                         <ComboBoxItem Name="version1" Background="#FF688BA8" Foreground="White">1.16.4</ComboBoxItem>
                                         <ComboBoxItem Name="version2" Background="#FF688BA8" Foreground="White">1.15.2</ComboBoxItem>
