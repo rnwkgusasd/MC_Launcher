@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MC_Launcher" xmlns:system="clr-namespace:System;assembly=mscorlib" xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
-        Title="MC - Launcher" Height="700" Width="1100" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="#FF383838" FontFamily="Manrope">
+        Title="MC - Launcher" Height="700" Width="1100" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="#FF383838" FontFamily="Manrope" Loaded="Window_Loaded" Closed="Window_Closed">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -106,13 +106,7 @@
                             </Grid>
                             <Grid Margin="0, 70, 0, 20" Background="#FFDAD9C3">
                                 <Grid Width="500" Height="350">
-                                    <Border Width="280" Height="50" Margin="0, 250, 0 , 0" CornerRadius="20" Background="White" />
-                                    <ComboBox Width="250" Height="40" Margin="0, 250, 0, 0" FontSize="24" Background="White" 
-                                              Style="{StaticResource MaterialDesignFilledComboBox}" Padding="15,-10,0,0">
-                                        <ComboBoxItem Name="version1" Background="#FF688BA8" Foreground="White">1.16.4</ComboBoxItem>
-                                        <ComboBoxItem Name="version2" Background="#FF688BA8" Foreground="White">1.15.2</ComboBoxItem>
-                                        <ComboBoxItem Name="version3" Background="#FF688BA8" Foreground="White">1.12.2</ComboBoxItem>
-                                    </ComboBox>
+                                    <Button x:Name="startBtn" Click="Button_Click_4">start</Button>
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -141,10 +135,13 @@
                                 </Border>
                                 <TabControl Width="550" Height="350" Margin="250, 0, 0, 0" Style="{StaticResource MaterialDesignNavigatilRailTabControl}" Background="{x:Null}" FontSize="20">
                                     <TabItem Width="100" Height="40" Background="#B2CDFBF9" BorderBrush="#FFB0B0B0" Header="Setting" Padding="25, 13, 0, 0" FontSize="15">
-                                        
+                                        <Grid>
+                                            <TextBlock x:Name="mcPath" TextWrapping="Wrap" Margin="95,29,2,284" Background="White"/>
+                                            <TextBlock x:Name="mcRam" TextWrapping="Wrap" Margin="95,79,2,234" Background="White"/>
+                                        </Grid>
                                     </TabItem>
                                     <TabItem Width="100" Height="40" Background="#B2CDFBF9" BorderBrush="#FFB0B0B0" Header="Mods" Padding="25, 13, 0, 0" FontSize="15">
-                                        
+
                                     </TabItem>
                                 </TabControl>
                             </Grid>

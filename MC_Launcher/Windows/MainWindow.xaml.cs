@@ -16,6 +16,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Windows.Threading;
+using System.IO;
+using System.Diagnostics;
+using System.Timers;
 
 namespace MC_Launcher
 {
@@ -51,8 +54,8 @@ namespace MC_Launcher
 
                 if (!mine.Login(ID.Text, PWD.Password))
                 {
-                    //loadingLogin.Visibility = Visibility.Hidden;
-                    //return;
+                    loadingLogin.Visibility = Visibility.Hidden;
+                    return;
                 }
                 else imgSkin.Source = api.GetSkinFromAPI(mine.UUID);
 
@@ -103,6 +106,76 @@ namespace MC_Launcher
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+        Process p = null;
+        System.Timers.Timer t = new System.Timers.Timer();
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            p = mine.Start("1.16.5");
+
+            startBtn.IsEnabled = false;
+
+            t = new System.Timers.Timer(500);
+            t.Elapsed += ProcessFunction;
+            t.Start();
+        }
+
+        public void ProcessFunction(object sender, ElapsedEventArgs e)
+        {
+            try
+            {
+                Process.GetProcessById(p.Id);
+            }
+            catch (InvalidOperationException)
+            {
+                
+                Dispatcher.Invoke(DispatcherPriority.Normal, new Action(delegate
+                {
+                    startBtn.IsEnabled = true;
+                }));
+
+                t.Stop();
+                return;
+            }
+            catch (ArgumentException)
+            {
+                Dispatcher.Invoke(DispatcherPriority.Normal, new Action(delegate
+                {
+                    startBtn.IsEnabled = true;
+                }));
+
+                t.Stop();
+                return;
+            }
+        }
+
+        public void SaveSettings()
+        {
+            List<string> settings = new List<string>();
+
+            if (IDsave.IsChecked == true)
+            {
+
+            }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            string strFolder = mine.GetDefaultPath();//Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData) + "\\.minecraft";
+
+            if(Directory.Exists(strFolder))
+            {
+                mcPath.Text = strFolder;
+            }
+
+            mcRam.Text = "2048";
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            
         }
     }
 }
