@@ -27,6 +27,9 @@ namespace MC_Launcher
     /// </summary>
     public partial class MainWindow : Window
     {
+        private List<string> cfg_val = new List<string>();
+        private ServerManager sm = new ServerManager();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -151,31 +154,85 @@ namespace MC_Launcher
             }
         }
 
-        public void SaveSettings()
+        public enum PropertySettings
         {
-            List<string> settings = new List<string>();
+            ID, ID_SAVE, MC_PATH, MC_RAM, MC_USE_OPTIFINE
+        }
+
+        public void SaveConfig()
+        {
+            List<string> config = new List<string>();
+
+            string _id, _idSave, _mcPath, _mcRam, _mcUseOptifine;
+
+            _id = ID.Text;
+            _idSave = IDsave.IsChecked.ToString();
+            _mcPath = mcPath.Text;
+            _mcRam = mcRam.Text;
+            _mcUseOptifine = "False";
 
             if (IDsave.IsChecked == true)
             {
-
+                config.Add($"{PropertySettings.ID}={_id}");
+                config.Add($"{PropertySettings.ID_SAVE}={_idSave}");
             }
+            else
+            {
+                config.Add($"{PropertySettings.ID}=");
+                config.Add($"{PropertySettings.ID_SAVE}=False");
+            }
+
+            config.Add($"{PropertySettings.MC_PATH}={_mcPath}");
+            config.Add($"{PropertySettings.MC_RAM}={_mcRam}");
+            config.Add($"{PropertySettings.MC_USE_OPTIFINE}={_mcUseOptifine}");
+
+            File.WriteAllLines($"{AppDomain.CurrentDomain.BaseDirectory}\\config.txt", config);
+        }
+
+        public void LoadConfig()
+        {
+            List<string> config = new List<string>();
+
+            config = File.ReadAllLines($"{AppDomain.CurrentDomain.BaseDirectory}\\config.txt").ToList();
+
+            for(int i = 0; i < config.Count; i++)
+            {
+                config[i] = config[i].Split(new string[] { "=" }, StringSplitOptions.None)[1];
+            }
+
+            cfg_val = config;
+
+            if(bool.Parse(config[(int)PropertySettings.ID_SAVE]))
+            {
+                IDsave.IsChecked = true;
+                ID.Text = config[(int)PropertySettings.ID];
+            }
+
+            mcPath.Text = config[(int)PropertySettings.MC_PATH];
+            mcRam.Text = config[(int)PropertySettings.MC_RAM];
+            // not already optifine checkbox
+            //mcUseOptifine.IsChecked = bool.Parse(settings[(int)PropertySettings.MC_USE_OPTIFINE]);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            string strFolder = mine.GetDefaultPath();//Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData) + "\\.minecraft";
+            LoadConfig();
+            sm.LoadServers();
 
-            if(Directory.Exists(strFolder))
-            {
-                mcPath.Text = strFolder;
-            }
+            //string strFolder = mine.GetDefaultPath();//Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData) + "\\.minecraft";
 
-            mcRam.Text = "2048";
+            //if(Directory.Exists(strFolder))
+            //{
+            //    mcPath.Text = strFolder;
+            //}
+
+            //mcRam.Text = "2048";
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            
+            SaveConfig();
+            sm.SaveServers();
         }
     }
 }

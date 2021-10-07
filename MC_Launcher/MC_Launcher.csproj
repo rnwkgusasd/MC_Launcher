@@ -39,6 +39,9 @@
   <PropertyGroup>
     <ApplicationIcon>icons8_rocket.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>MC_Launcher.App</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CmlLib, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\CmlLib.Core.3.0.0\lib\net462\CmlLib.dll</HintPath>
@@ -92,6 +95,7 @@
     </Compile>
     <Compile Include="Source\AccessAPI.cs" />
     <Compile Include="Source\Minecraft.cs" />
+    <Compile Include="Source\Server.cs" />
     <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
