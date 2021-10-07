@@ -193,7 +193,14 @@ namespace MC_Launcher
         {
             List<string> config = new List<string>();
 
+            if (File.Exists($"{AppDomain.CurrentDomain.BaseDirectory}\\config.txt"))
+            {
+                File.Create($"{AppDomain.CurrentDomain.BaseDirectory}\\config.txt");
+            }
+
             config = File.ReadAllLines($"{AppDomain.CurrentDomain.BaseDirectory}\\config.txt").ToList();
+
+            if (config.Count == 0) return;
 
             for(int i = 0; i < config.Count; i++)
             {
@@ -218,15 +225,6 @@ namespace MC_Launcher
         {
             LoadConfig();
             sm.LoadServers();
-
-            //string strFolder = mine.GetDefaultPath();//Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData) + "\\.minecraft";
-
-            //if(Directory.Exists(strFolder))
-            //{
-            //    mcPath.Text = strFolder;
-            //}
-
-            //mcRam.Text = "2048";
         }
 
         private void Window_Closed(object sender, EventArgs e)

@@ -40,6 +40,11 @@ namespace MC_Launcher
 
             try
             {
+                if(File.Exists($"{AppDomain.CurrentDomain.BaseDirectory}\\svlst.txt")) 
+                {
+                    File.Create($"{AppDomain.CurrentDomain.BaseDirectory}\\svlst.txt");
+                }
+                
                 list = File.ReadAllLines($"{AppDomain.CurrentDomain.BaseDirectory}\\svlst.txt").ToList();
             }
             catch (Exception)
