@@ -19,6 +19,7 @@ using System.Windows.Threading;
 using System.IO;
 using System.Diagnostics;
 using System.Timers;
+using System.Management;
 
 namespace MC_Launcher
 {
@@ -171,6 +172,24 @@ namespace MC_Launcher
             _mcRam = mcRam.Text;
             _mcUseOptifine = "False";
 
+            if (_mcRam == "") _mcRam = "2";
+
+            ManagementObjectSearcher sys = new ManagementObjectSearcher("select * from Win32_ComputerSystem");
+
+            string maxRamSize = "";
+
+            foreach (ManagementObject obj in sys.Get())
+            {
+                maxRamSize = obj["totalphysicalmemory"].ToString();
+            }
+
+            int maxRamSizeINT = (int)(double.Parse(maxRamSize) / 1000 / 1000 / 1000);
+
+            if (int.Parse(_mcRam) > maxRamSizeINT)
+            {
+                _mcRam = maxRamSizeINT.ToString();
+            }
+
             if (IDsave.IsChecked == true)
             {
                 config.Add($"{PropertySettings.ID}={_id}");
@@ -193,9 +212,11 @@ namespace MC_Launcher
         {
             List<string> config = new List<string>();
 
-            if (File.Exists($"{AppDomain.CurrentDomain.BaseDirectory}\\config.txt"))
+            if (!File.Exists($"{AppDomain.CurrentDomain.BaseDirectory}\\config.txt"))
             {
                 File.Create($"{AppDomain.CurrentDomain.BaseDirectory}\\config.txt");
+
+                return;
             }
 
             config = File.ReadAllLines($"{AppDomain.CurrentDomain.BaseDirectory}\\config.txt").ToList();
@@ -219,6 +240,17 @@ namespace MC_Launcher
             mcRam.Text = config[(int)PropertySettings.MC_RAM];
             // not already optifine checkbox
             //mcUseOptifine.IsChecked = bool.Parse(settings[(int)PropertySettings.MC_USE_OPTIFINE]);
+
+            ManagementObjectSearcher sys = new ManagementObjectSearcher("select * from Win32_VideoController");
+
+            string graphicName = "";
+
+            foreach (ManagementObject obj in sys.Get())
+            {
+                graphicName = obj["Name"].ToString();
+            }
+
+            textBlockGraphic.Text = graphicName;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

@@ -136,8 +136,12 @@
                                 <TabControl Width="550" Height="350" Margin="250, 0, 0, 0" Style="{StaticResource MaterialDesignNavigatilRailTabControl}" Background="{x:Null}" FontSize="20">
                                     <TabItem Width="100" Height="40" Background="#B2CDFBF9" BorderBrush="#FFB0B0B0" Header="Setting" Padding="25, 13, 0, 0" FontSize="15">
                                         <Grid>
-                                            <TextBlock x:Name="mcPath" TextWrapping="Wrap" Margin="95,29,2,284" Background="White"/>
-                                            <TextBlock x:Name="mcRam" TextWrapping="Wrap" Margin="95,79,2,234" Background="White"/>
+                                            <TextBlock x:Name="textBlockGraphic" Width="400" Height="30" Margin="48,10,2,310" TextAlignment="Right"></TextBlock>
+                                            <TextBlock FontSize="20" Width="50" Height="30" Margin="30,61,370,259">Path</TextBlock>
+                                            <TextBox x:Name="mcPath" TextWrapping="Wrap" Margin="130,61,2,252" Background="White"/>
+                                            <TextBlock FontSize="20" Width="50" Height="30" Margin="30,111,370,209">RAM</TextBlock>
+                                            <TextBlock FontSize="20" Width="30" Height="30" Margin="410,118,10,202">Gb</TextBlock>
+                                            <TextBox x:Name="mcRam" TextWrapping="Wrap" Margin="130,111,50,202" Background="White" TextAlignment="Right"/>
                                         </Grid>
                                     </TabItem>
                                     <TabItem Width="100" Height="40" Background="#B2CDFBF9" BorderBrush="#FFB0B0B0" Header="Mods" Padding="25, 13, 0, 0" FontSize="15">
