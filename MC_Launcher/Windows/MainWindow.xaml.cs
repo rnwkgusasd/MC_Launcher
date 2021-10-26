@@ -85,12 +85,6 @@ namespace MC_Launcher
             sb.Begin(SlidePanel);
         }
 
-        private void Setup_Click(object sender, RoutedEventArgs e)
-        {
-            Storyboard sb = Resources["Setup"] as Storyboard;
-            sb.Begin(SlidePanel);
-        }
-
         private void BackMenu_Click(object sender, RoutedEventArgs e)
         {
             Storyboard sb = Resources["BackMenu"] as Storyboard;
@@ -263,6 +257,22 @@ namespace MC_Launcher
         {
             SaveConfig();
             sm.SaveServers();
+        }
+
+        private void serverBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void modsBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void optionBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Storyboard sb = Resources["Setup"] as Storyboard;
+            sb.Begin(SlidePanel);
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MC_Launcher" xmlns:system="clr-namespace:System;assembly=mscorlib" xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
-        Title="MC - Launcher" Height="700" Width="1100" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="#FF383838" FontFamily="Manrope" Loaded="Window_Loaded" Closed="Window_Closed">
+        Title="MC - Launcher" Height="700" Width="1040" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="#FF383838" FontFamily="Manrope" Loaded="Window_Loaded" Closed="Window_Closed">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -17,16 +17,16 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TabControl.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <Storyboard x:Key="LoginBtn">
-                <ThicknessAnimation Storyboard.TargetProperty="Margin" From="75, 30, 0, 0" To="-955, 30, 0, 0" DecelerationRatio=".9" Duration="0:0:1"/>
+                <ThicknessAnimation Storyboard.TargetProperty="Margin" From="45, 30, 0, 0" To="-985, 30, 0, 0" DecelerationRatio=".9" Duration="0:0:1"/>
             </Storyboard>
             <Storyboard x:Key="BackLogin">
-                <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-955, 30, 0, 0" To="75, 30, 0, 0" DecelerationRatio=".9" Duration="0:0:1"/>
+                <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-985, 30, 0, 0" To="45, 30, 0, 0" DecelerationRatio=".9" Duration="0:0:1"/>
             </Storyboard>
             <Storyboard x:Key="Setup">
-                <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-955, 30, 0, 0" To="-2065, 30, 0, 0" DecelerationRatio=".9" Duration="0:0:1"/>
+                <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-985, 30, 0, 0" To="-2095, 30, 0, 0" DecelerationRatio=".9" Duration="0:0:1"/>
             </Storyboard>
             <Storyboard x:Key="BackMenu">
-                <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-2065, 30, 0, 0" To="-955, 30, 0, 0" DecelerationRatio=".9" Duration="0:0:1"/>
+                <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-2095, 30, 0, 0" To="-985, 30, 0, 0" DecelerationRatio=".9" Duration="0:0:1"/>
             </Storyboard>
         </ResourceDictionary>
     </Window.Resources>
@@ -43,7 +43,7 @@
                     Style="{StaticResource MaterialDesignFloatingActionButton}" BorderBrush="#00707070" Click="Button_Click_3" />
         </Grid>
 
-        <StackPanel Panel.ZIndex="2" Name="SlidePanel" Orientation="Horizontal" Margin="75,80,-2479,50" Height="600" VerticalAlignment="Center" HorizontalAlignment="Left">
+        <StackPanel Panel.ZIndex="2" Name="SlidePanel" Orientation="Horizontal" Margin="45,80,-2479,50" Height="600" VerticalAlignment="Center" HorizontalAlignment="Left">
             <Grid x:Name="loginGrid" Width="950" Height="550">
                 <Grid x:Name="Login_Panel_Shadow" Height="500" Width="900" Margin="40, 50, 0, 0">
                     <Border CornerRadius="20" Background="#FF1F1E1E"/>
@@ -90,6 +90,10 @@
                 <Grid Width="900" Height="500" Margin="0, 0, 0, 0">
                     <Border CornerRadius="20" Background="#FFE0E0E0">
                         <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="487*"/>
+                                <ColumnDefinition Width="413*"/>
+                            </Grid.ColumnDefinitions>
                             <Button Width="30" Height="30" Click="Button_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20, 20, 0, 0" BorderThickness="0"
                                     Style="{StaticResource MaterialDesignFlatAccentBgButton}">
                                 <Button.Background>
@@ -97,28 +101,31 @@
                                 </Button.Background>
                             </Button>
                             <TextBlock VerticalAlignment="Top" HorizontalAlignment="Left" Text="LOGOUT" Foreground="#FF646060" Margin="55,24,0,0" FontSize="16" FontWeight="Bold" />
-                            <Grid Width="30" Height="30" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="20">
-                                <Button Style="{StaticResource MaterialDesignFlatAccentBgButton}" Click="Setup_Click" BorderBrush="{x:Null}">
-                                    <Button.Background>
-                                        <ImageBrush ImageSource="settings_50px.png"/>
-                                    </Button.Background>
-                                </Button>
-                            </Grid>
-                            <Grid Margin="0, 70, 0, 20" Background="#FFDAD9C3">
+                            <Grid Margin="0, 70, 0, 20" Background="#FFD1D0C7" Grid.ColumnSpan="2">
                                 <Grid Height="350" Margin="30,30,620,30">
-                                    <Button x:Name="startBtn" Click="Button_Click_4" Style="{StaticResource MaterialDesignFlatMidBgButton}" Height="Auto" Background="#FFD8E8E8">PLAY</Button>
+                                    <Button x:Name="startBtn" Click="Button_Click_4" Style="{StaticResource MaterialDesignFlatMidBgButton}" Height="Auto" Background="#FFE2474B">
+                                        <Image Width="50" Source="play.png" />
+                                    </Button>
                                 </Grid>
                                 <Grid Margin="300,30,290,195">
-                                    <Button x:Name="serverBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" Height="Auto" Background="#FFA8D0DA">SERVER</Button>
+                                    <Button x:Name="serverBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" Height="Auto" Background="#FF2F3A56" Click="serverBtn_Click">
+                                        <Image Width="50" Source="server.png" />
+                                    </Button>
                                 </Grid>
                                 <Grid Margin="300,235,290,30">
-                                    <Button Style="{StaticResource MaterialDesignFlatMidBgButton}" Height="Auto" Background="#FF406D96"/>
+                                    <Button x:Name="versionBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" Height="Auto" Background="#FF406D96">
+                                        <Image Width="50" Source="version.png" />
+                                    </Button>
                                 </Grid>
                                 <Grid Margin="630,30,30,235">
-                                    <Button x:Name="optionBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" Height="Auto" Background="#FF2F3A56">OPTION</Button>
+                                    <Button x:Name="optionBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" Height="Auto" Background="#FFA8D0DA" Click="optionBtn_Click">
+                                        <Image Width="50" Source="settings_50px.png" />
+                                    </Button>
                                 </Grid>
                                 <Grid Margin="630,195,30,30">
-                                    <Button x:Name="modsBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" Height="Auto" Background="#FFE2474B">MODS</Button>
+                                    <Button x:Name="modsBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" Height="Auto" Background="#FFD8E8E8" Click="modsBtn_Click">
+                                        <Image Width="50" Source="mods.png" />
+                                    </Button>
                                 </Grid>
                             </Grid>
                         </Grid>

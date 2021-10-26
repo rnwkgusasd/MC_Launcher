@@ -130,9 +130,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="그림1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="logo03.png" />
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +149,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Windows\rocket_127px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\server.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\mods.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\version.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets')" />
