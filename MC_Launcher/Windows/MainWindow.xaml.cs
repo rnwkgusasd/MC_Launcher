@@ -56,12 +56,12 @@ namespace MC_Launcher
             {
                 loadingLogin.Visibility = Visibility.Visible;
 
-                //if (!mine.Login(ID.Text, PWD.Password))
-                //{
-                //    loadingLogin.Visibility = Visibility.Hidden;
-                //    return;
-                //}
-                //else imgSkin.Source = api.GetSkinFromAPI(mine.UUID);
+                if (!mine.Login(ID.Text, PWD.Password))
+                {
+                    loadingLogin.Visibility = Visibility.Hidden;
+                    return;
+                }
+                else imgSkin.Source = api.GetSkinFromAPI(mine.UUID);
 
                 Storyboard sb = Resources["LoginBtn"] as Storyboard;
                 sb.Begin(SlidePanel);
@@ -122,18 +122,55 @@ namespace MC_Launcher
 
         private void serverBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            serverVersionBackground.Visibility = Visibility.Visible;
+            serverPopup.Visibility = Visibility.Visible;
         }
 
         private void modsBtn_Click(object sender, RoutedEventArgs e)
         {
+            serverVersionBackground.Visibility = Visibility.Visible;
+            modsBtn.Visibility = Visibility.Visible;
+        }
 
+        private void versionBtn_Click(object sender, RoutedEventArgs e)
+        {
+            serverVersionBackground.Visibility = Visibility.Visible;
+            versionPopup.Visibility = Visibility.Visible;
         }
 
         private void optionBtn_Click(object sender, RoutedEventArgs e)
         {
             Storyboard sb = Resources["Setup"] as Storyboard;
             sb.Begin(SlidePanel);
+        }
+
+        private void serverOKBtn_Click(object sender, RoutedEventArgs e)
+        {
+            serverVersionBackground.Visibility = Visibility.Hidden;
+            serverPopup.Visibility = Visibility.Hidden;
+        }
+
+        private void versionOKBtn_Click(object sender, RoutedEventArgs e)
+        {
+            serverVersionBackground.Visibility = Visibility.Hidden;
+            versionPopup.Visibility = Visibility.Hidden;
+        }
+
+        private void fileDialogBtn_Click(object sender, RoutedEventArgs e)
+        {
+            using (System.Windows.Forms.FolderBrowserDialog fd = new System.Windows.Forms.FolderBrowserDialog())
+            {
+                if (fd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    mcPath.Text = fd.SelectedPath; 
+                }
+            }
+        }
+
+        private void modsOKBtn_Click(object sender, RoutedEventArgs e)
+        {
+            serverVersionBackground.Visibility = Visibility.Visible;
+            modsBtn.Visibility = Visibility.Visible;
         }
 
         #endregion
@@ -415,6 +452,11 @@ namespace MC_Launcher
             }
 
             textBlockGraphic.Text = graphicName;
+
+            if(mcPath.Text == "")
+            {
+                mcPath.Text = mine.GetDefaultPath();
+            }
         }
 
         #endregion

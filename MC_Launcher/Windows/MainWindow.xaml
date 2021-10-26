@@ -113,7 +113,7 @@
                                     </Button>
                                 </Grid>
                                 <Grid Margin="300,235,290,30">
-                                    <Button x:Name="versionBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" Height="Auto" Background="#FF406D96" MouseEnter="versionBtn_MouseEnter" MouseLeave="versionBtn_MouseLeave">
+                                    <Button x:Name="versionBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" Height="Auto" Background="#FF406D96" MouseEnter="versionBtn_MouseEnter" MouseLeave="versionBtn_MouseLeave" Click="versionBtn_Click">
                                         <Image x:Name="versionImg" Width="50" Source="version.png" />
                                     </Button>
                                 </Grid>
@@ -135,6 +135,21 @@
                                 <TextBlock x:Name="optionTxt" Text="OPTION" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="24" Visibility="Hidden" Height="35" Margin="708,104,102,271" Width="90" FontWeight="Bold" MouseEnter="optionTxt_MouseEnter" MouseLeave="optionTxt_MouseLeave" />
                                 <TextBlock x:Name="modsTxt" Text="MOD" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFB6B6B6" FontSize="24" Visibility="Hidden" Height="40" Margin="722,290,114,80" Width="64" FontWeight="Bold" MouseEnter="modsTxt_MouseEnter" MouseLeave="modsTxt_MouseLeave" />
                             </Grid>
+
+                            <Border Name="serverVersionBackground" CornerRadius="18.5" Grid.ColumnSpan="2" Background="#CC000000" Visibility="Hidden" />
+
+                            <Grid x:Name="serverPopup" Margin="266,87,275,111" Grid.ColumnSpan="2" Background="#FF606272" Visibility="Hidden">
+                                <Button x:Name="serverOKBtn" Margin="10,250,10,10" Click="serverOKBtn_Click">OK</Button>
+                            </Grid>
+
+                            <Grid x:Name="versionPopup" Margin="266,87,275,111" Grid.ColumnSpan="2" Background="#FF606272" Visibility="Hidden">
+                                <Button x:Name="versionOKBtn" Margin="10,250,10,10" Click="versionOKBtn_Click">OK</Button>
+                            </Grid>
+
+                            <Grid x:Name="modsPopup" Margin="266,87,275,111" Grid.ColumnSpan="2" Background="#FF606272" Visibility="Hidden">
+                                <Button x:Name="modsOKBtn" Margin="10,250,10,10" Click="modsOKBtn_Click">OK</Button>
+                            </Grid>
+
                         </Grid>
                     </Border>
                 </Grid>
@@ -163,16 +178,12 @@
                                     <TabItem Width="100" Height="40" Background="#B2CDFBF9" BorderBrush="#FFB0B0B0" Header="Setting" Padding="25, 13, 0, 0" FontSize="15">
                                         <Grid>
                                             <TextBlock x:Name="textBlockGraphic" Width="400" Height="30" Margin="48,10,2,310" TextAlignment="Right"></TextBlock>
-                                            <TextBlock FontSize="20" Width="50" Height="30" Margin="30,61,370,259">Path</TextBlock>
-                                            <TextBox x:Name="mcPath" TextWrapping="Wrap" Margin="130,61,2,252" Background="White"/>
-                                            <TextBlock FontSize="20" Width="50" Height="30" Margin="30,111,370,209">RAM</TextBlock>
-                                            <TextBlock FontSize="20" Width="30" Height="30" Margin="410,118,10,202">Gb</TextBlock>
-                                            <TextBox x:Name="mcRam" TextWrapping="Wrap" Margin="130,111,50,202" Background="White" TextAlignment="Right"/>
-                                        </Grid>
-                                    </TabItem>
-                                    <TabItem Width="100" Height="40" Background="#B2CDFBF9" BorderBrush="#FFB0B0B0" Header="Mods" Padding="25, 13, 0, 0" FontSize="15">
-                                        <Grid>
-
+                                            <TextBlock FontSize="20" Height="30" Margin="10,61,394,259">Path</TextBlock>
+                                            <TextBox x:Name="mcPath" TextWrapping="Wrap" Margin="63,61,38,252" Background="White"/>
+                                            <Button x:Name="fileDialogBtn" Margin="419,61,10,252" Click="fileDialogBtn_Click">...</Button>
+                                            <TextBlock FontSize="20" Height="30" Margin="10,111,394,209">RAM</TextBlock>
+                                            <TextBlock FontSize="20" Height="30" Margin="177,118,246,202">Gb</TextBlock>
+                                            <TextBox x:Name="mcRam" TextWrapping="Wrap" Margin="63,111,280,202" Background="White" TextAlignment="Right"/>
                                         </Grid>
                                     </TabItem>
                                 </TabControl>
