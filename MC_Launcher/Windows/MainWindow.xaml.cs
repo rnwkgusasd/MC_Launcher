@@ -56,12 +56,12 @@ namespace MC_Launcher
             {
                 loadingLogin.Visibility = Visibility.Visible;
 
-                if (!mine.Login(ID.Text, PWD.Password))
-                {
-                    loadingLogin.Visibility = Visibility.Hidden;
-                    return;
-                }
-                else imgSkin.Source = api.GetSkinFromAPI(mine.UUID);
+                //if (!mine.Login(ID.Text, PWD.Password))
+                //{
+                //    loadingLogin.Visibility = Visibility.Hidden;
+                //    return;
+                //}
+                //else imgSkin.Source = api.GetSkinFromAPI(mine.UUID);
 
                 Storyboard sb = Resources["LoginBtn"] as Storyboard;
                 sb.Begin(SlidePanel);

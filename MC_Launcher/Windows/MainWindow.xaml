@@ -105,8 +105,20 @@
                                 </Button>
                             </Grid>
                             <Grid Margin="0, 70, 0, 20" Background="#FFDAD9C3">
-                                <Grid Width="500" Height="350">
-                                    <Button x:Name="startBtn" Click="Button_Click_4">start</Button>
+                                <Grid Height="350" Margin="30,30,620,30">
+                                    <Button x:Name="startBtn" Click="Button_Click_4" Style="{StaticResource MaterialDesignFlatMidBgButton}" Height="Auto" Background="#FFD8E8E8">PLAY</Button>
+                                </Grid>
+                                <Grid Margin="300,30,290,195">
+                                    <Button x:Name="serverBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" Height="Auto" Background="#FFA8D0DA">SERVER</Button>
+                                </Grid>
+                                <Grid Margin="300,235,290,30">
+                                    <Button Style="{StaticResource MaterialDesignFlatMidBgButton}" Height="Auto" Background="#FF406D96"/>
+                                </Grid>
+                                <Grid Margin="630,30,30,235">
+                                    <Button x:Name="optionBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" Height="Auto" Background="#FF2F3A56">OPTION</Button>
+                                </Grid>
+                                <Grid Margin="630,195,30,30">
+                                    <Button x:Name="modsBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" Height="Auto" Background="#FFE2474B">MODS</Button>
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -146,7 +158,7 @@
                                     </TabItem>
                                     <TabItem Width="100" Height="40" Background="#B2CDFBF9" BorderBrush="#FFB0B0B0" Header="Mods" Padding="25, 13, 0, 0" FontSize="15">
                                         <Grid>
-                                            
+
                                         </Grid>
                                     </TabItem>
                                 </TabControl>
