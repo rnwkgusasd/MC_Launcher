@@ -28,8 +28,17 @@ namespace MC_Launcher
     /// </summary>
     public partial class MainWindow : Window
     {
+        #region [Member Variable]
+
         private List<string> cfg_val = new List<string>();
         private ServerManager sm = new ServerManager();
+
+        public Source.AccessAPI api = new Source.AccessAPI();
+        public Source.Minecraft mine = new Source.Minecraft();
+
+        #endregion
+
+        #region [Initialize]
 
         public MainWindow()
         {
@@ -37,18 +46,9 @@ namespace MC_Launcher
             // https://www.wpf-tutorial.com/tabcontrol/styling-the-tabitems/ custom grid
         }
 
-        private void DragPoint_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
-        }
+        #endregion
 
-        private void HyperLink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
-        {
-            System.Diagnostics.Process.Start(e.Uri.AbsoluteUri);
-        }
-
-        public Source.AccessAPI api = new Source.AccessAPI();
-        public Source.Minecraft mine = new Source.Minecraft();
+        #region [Button Click Event]
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -75,7 +75,7 @@ namespace MC_Launcher
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(IDsave.IsChecked == null || IDsave.IsChecked == false)
+            if (IDsave.IsChecked == null || IDsave.IsChecked == false)
             {
                 ID.Text = "";
             }
@@ -120,6 +120,176 @@ namespace MC_Launcher
             t.Start();
         }
 
+        private void serverBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void modsBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void optionBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Storyboard sb = Resources["Setup"] as Storyboard;
+            sb.Begin(SlidePanel);
+        }
+
+        #endregion
+
+        #region [Button Animation]
+
+        private void startBtn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            startImg.Margin = new Thickness(0, 0, 0, 50);
+            startTxt.Visibility = Visibility.Visible;
+        }
+
+        private void startBtn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            startImg.Margin = new Thickness(0, 0, 0, 0);
+            startTxt.Visibility = Visibility.Hidden;
+        }
+
+        private void serverBtn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            serverImg.Margin = new Thickness(0, 0, 0, 50);
+            serverTxt.Visibility = Visibility.Visible;
+        }
+
+        private void serverBtn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            serverImg.Margin = new Thickness(0, 0, 0, 0);
+            serverTxt.Visibility = Visibility.Hidden;
+        }
+
+        private void versionBtn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            versionImg.Margin = new Thickness(0, 0, 0, 50);
+            versionTxt.Visibility = Visibility.Visible;
+        }
+
+        private void versionBtn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            versionImg.Margin = new Thickness(0, 0, 0, 0);
+            versionTxt.Visibility = Visibility.Hidden;
+        }
+
+        private void optionBtn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            optionImg.Margin = new Thickness(0, 0, 0, 50);
+            optionTxt.Visibility = Visibility.Visible;
+        }
+
+        private void optionBtn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            optionImg.Margin = new Thickness(0, 0, 0, 0);
+            optionTxt.Visibility = Visibility.Hidden;
+        }
+
+        private void modsBtn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            modsImg.Margin = new Thickness(0, 0, 0, 50);
+            modsTxt.Visibility = Visibility.Visible;
+        }
+
+        private void modsBtn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            modsImg.Margin = new Thickness(0, 0, 0, 0);
+            modsTxt.Visibility = Visibility.Hidden;
+        }
+
+        private void startTxt_MouseEnter(object sender, MouseEventArgs e)
+        {
+            startImg.Margin = new Thickness(0, 0, 0, 50);
+            startTxt.Visibility = Visibility.Visible;
+        }
+
+        private void startTxt_MouseLeave(object sender, MouseEventArgs e)
+        {
+            startImg.Margin = new Thickness(0, 0, 0, 0);
+            startTxt.Visibility = Visibility.Hidden;
+        }
+
+        private void serverTxt_MouseEnter(object sender, MouseEventArgs e)
+        {
+            serverImg.Margin = new Thickness(0, 0, 0, 50);
+            serverTxt.Visibility = Visibility.Visible;
+        }
+
+        private void serverTxt_MouseLeave(object sender, MouseEventArgs e)
+        {
+            serverImg.Margin = new Thickness(0, 0, 0, 0);
+            serverTxt.Visibility = Visibility.Hidden;
+        }
+
+        private void versionTxt_MouseEnter(object sender, MouseEventArgs e)
+        {
+            versionImg.Margin = new Thickness(0, 0, 0, 50);
+            versionTxt.Visibility = Visibility.Visible;
+        }
+
+        private void versionTxt_MouseLeave(object sender, MouseEventArgs e)
+        {
+            versionImg.Margin = new Thickness(0, 0, 0, 0);
+            versionTxt.Visibility = Visibility.Hidden;
+        }
+
+        private void optionTxt_MouseEnter(object sender, MouseEventArgs e)
+        {
+            optionImg.Margin = new Thickness(0, 0, 0, 50);
+            optionTxt.Visibility = Visibility.Visible;
+        }
+
+        private void optionTxt_MouseLeave(object sender, MouseEventArgs e)
+        {
+            optionImg.Margin = new Thickness(0, 0, 0, 0);
+            optionTxt.Visibility = Visibility.Hidden;
+        }
+
+        private void modsTxt_MouseEnter(object sender, MouseEventArgs e)
+        {
+            modsImg.Margin = new Thickness(0, 0, 0, 50);
+            modsTxt.Visibility = Visibility.Visible;
+        }
+
+        private void modsTxt_MouseLeave(object sender, MouseEventArgs e)
+        {
+            modsImg.Margin = new Thickness(0, 0, 0, 0);
+            modsTxt.Visibility = Visibility.Hidden;
+        }
+
+        #endregion
+
+        #region [Window Event]
+
+        private void DragPoint_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        private void HyperLink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            System.Diagnostics.Process.Start(e.Uri.AbsoluteUri);
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadConfig();
+            sm.LoadServers();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            SaveConfig();
+            sm.SaveServers();
+        }
+
+        #endregion
+
+        #region [Function]
+
         public void ProcessFunction(object sender, ElapsedEventArgs e)
         {
             try
@@ -128,7 +298,7 @@ namespace MC_Launcher
             }
             catch (InvalidOperationException)
             {
-                
+
                 Dispatcher.Invoke(DispatcherPriority.Normal, new Action(delegate
                 {
                     startBtn.IsEnabled = true;
@@ -217,14 +387,14 @@ namespace MC_Launcher
 
             if (config.Count == 0) return;
 
-            for(int i = 0; i < config.Count; i++)
+            for (int i = 0; i < config.Count; i++)
             {
                 config[i] = config[i].Split(new string[] { "=" }, StringSplitOptions.None)[1];
             }
 
             cfg_val = config;
 
-            if(bool.Parse(config[(int)PropertySettings.ID_SAVE]))
+            if (bool.Parse(config[(int)PropertySettings.ID_SAVE]))
             {
                 IDsave.IsChecked = true;
                 ID.Text = config[(int)PropertySettings.ID];
@@ -247,32 +417,6 @@ namespace MC_Launcher
             textBlockGraphic.Text = graphicName;
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            LoadConfig();
-            sm.LoadServers();
-        }
-
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            SaveConfig();
-            sm.SaveServers();
-        }
-
-        private void serverBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void modsBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void optionBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Storyboard sb = Resources["Setup"] as Storyboard;
-            sb.Begin(SlidePanel);
-        }
+        #endregion
     }
 }

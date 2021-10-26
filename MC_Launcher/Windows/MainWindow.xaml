@@ -103,30 +103,37 @@
                             <TextBlock VerticalAlignment="Top" HorizontalAlignment="Left" Text="LOGOUT" Foreground="#FF646060" Margin="55,24,0,0" FontSize="16" FontWeight="Bold" />
                             <Grid Margin="0, 70, 0, 20" Background="#FFD1D0C7" Grid.ColumnSpan="2">
                                 <Grid Height="350" Margin="30,30,620,30">
-                                    <Button x:Name="startBtn" Click="Button_Click_4" Style="{StaticResource MaterialDesignFlatMidBgButton}" Height="Auto" Background="#FFE2474B">
-                                        <Image Width="50" Source="play.png" />
+                                    <Button x:Name="startBtn" Click="Button_Click_4" Style="{StaticResource MaterialDesignFlatMidBgButton}" Height="Auto" Background="#FFE2474B" MouseEnter="startBtn_MouseEnter" MouseLeave="startBtn_MouseLeave">
+                                        <Image x:Name="startImg" Width="50" Source="play.png" />
                                     </Button>
                                 </Grid>
                                 <Grid Margin="300,30,290,195">
-                                    <Button x:Name="serverBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" Height="Auto" Background="#FF2F3A56" Click="serverBtn_Click">
-                                        <Image Width="50" Source="server.png" />
+                                    <Button x:Name="serverBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" Height="Auto" Background="#FF2F3A56" Click="serverBtn_Click" MouseEnter="serverBtn_MouseEnter" MouseLeave="serverBtn_MouseLeave">
+                                        <Image x:Name="serverImg" Width="50" Source="server.png" />
                                     </Button>
                                 </Grid>
                                 <Grid Margin="300,235,290,30">
-                                    <Button x:Name="versionBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" Height="Auto" Background="#FF406D96">
-                                        <Image Width="50" Source="version.png" />
+                                    <Button x:Name="versionBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" Height="Auto" Background="#FF406D96" MouseEnter="versionBtn_MouseEnter" MouseLeave="versionBtn_MouseLeave">
+                                        <Image x:Name="versionImg" Width="50" Source="version.png" />
                                     </Button>
                                 </Grid>
                                 <Grid Margin="630,30,30,235">
-                                    <Button x:Name="optionBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" Height="Auto" Background="#FFA8D0DA" Click="optionBtn_Click">
-                                        <Image Width="50" Source="settings_50px.png" />
+                                    <Button x:Name="optionBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" Height="Auto" Background="#FFA8D0DA" Click="optionBtn_Click" MouseEnter="optionBtn_MouseEnter" MouseLeave="optionBtn_MouseLeave">
+                                        <Image x:Name="optionImg" Width="50" Source="settings_50px.png" />
                                     </Button>
                                 </Grid>
                                 <Grid Margin="630,195,30,30">
-                                    <Button x:Name="modsBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" Height="Auto" Background="#FFD8E8E8" Click="modsBtn_Click">
-                                        <Image Width="50" Source="mods.png" />
+                                    <Button x:Name="modsBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" Height="Auto" Background="#FFD8E8E8" Click="modsBtn_Click" MouseEnter="modsBtn_MouseEnter" MouseLeave="modsBtn_MouseLeave">
+                                        <Image x:Name="modsImg" Width="50" Source="mods.png" />
                                     </Button>
                                 </Grid>
+                            </Grid>
+                            <Grid Margin="0, 70, 0, 20" Grid.ColumnSpan="2">
+                                <TextBlock x:Name="startTxt" Text="START" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="24" Visibility="Hidden" Margin="115,214,709,163" Width="76" Height="33" FontWeight="Bold" MouseEnter="startTxt_MouseEnter" MouseLeave="startTxt_MouseLeave" />
+                                <TextBlock x:Name="serverTxt" Text="SERVER" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="24" Visibility="Hidden" Height="32" Margin="400,129,392,249" Width="92" FontWeight="Bold" MouseEnter="serverTxt_MouseEnter" MouseLeave="serverTxt_MouseLeave" />
+                                <TextBlock x:Name="versionTxt" Text="VERSION" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="24" Visibility="Hidden" Height="35" Margin="395,310,382,65" Width="111" FontWeight="Bold" MouseLeave="versionTxt_MouseLeave" MouseEnter="versionTxt_MouseEnter" />
+                                <TextBlock x:Name="optionTxt" Text="OPTION" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="24" Visibility="Hidden" Height="35" Margin="708,104,102,271" Width="90" FontWeight="Bold" MouseEnter="optionTxt_MouseEnter" MouseLeave="optionTxt_MouseLeave" />
+                                <TextBlock x:Name="modsTxt" Text="MOD" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFB6B6B6" FontSize="24" Visibility="Hidden" Height="40" Margin="722,290,114,80" Width="64" FontWeight="Bold" MouseEnter="modsTxt_MouseEnter" MouseLeave="modsTxt_MouseLeave" />
                             </Grid>
                         </Grid>
                     </Border>
