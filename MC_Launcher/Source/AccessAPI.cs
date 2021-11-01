@@ -65,6 +65,28 @@ namespace MC_Launcher.Source
             }
         }
 
+        public void SetSkinFromAPI(string token, string imgPath, bool isClassic=true)
+        {
+            try
+            {
+                string header = $"Authorization: Bearer {token}";
+                string uri = "https://api.minecraftservices.com/minecraft/profile/skins";
+
+                var parameter = new { variant = isClassic ? "classic" : "slim", file = imgPath };
+                string data = JsonConvert.SerializeObject(parameter);
+
+                using (WebClient uploader = new WebClient())
+                {
+                    uploader.Headers[HttpRequestHeader.ContentType] = "application/json";
+                    string rst = uploader.UploadString(uri, data);
+                }
+            }
+            catch (Exception)
+            {
+                return;
+            }
+        }
+
         public class UUID_OBJ
         {
             public string name { get; set; }

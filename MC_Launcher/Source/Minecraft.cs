@@ -22,10 +22,11 @@ namespace MC_Launcher.Source
 
         public string USERNAME { get { return se.Username; } }
         public string UUID { get { return se.UUID; } }
+        public string ACCESS_TOKEN { get { return se.AccessToken; } }
 
         public Minecraft()
         {
-
+            
         }
 
         private MLogin login = new MLogin();

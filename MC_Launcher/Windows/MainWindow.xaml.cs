@@ -471,6 +471,16 @@ namespace MC_Launcher
             }
         }
 
+        public void ChangeSkin()
+        {
+            Image img = new Image();
+
+            if(ImageSizeCheck(img, 64, 64))
+            {
+                //api.SetSkinFromAPI(mine.ACCESS_TOKEN, "");
+            }
+        }
+
         #endregion
     }
 }
