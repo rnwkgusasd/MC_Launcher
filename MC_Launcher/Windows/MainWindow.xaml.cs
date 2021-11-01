@@ -461,7 +461,7 @@ namespace MC_Launcher
 
         public bool ImageSizeCheck(Image _img, int _width, int _height)
         {
-            if(_img.Width == _width && _img.Height == _height)
+            if(_img.Source.Width == _width && _img.Source.Height == _height)
             {
                 return true;
             }
