@@ -323,7 +323,16 @@ namespace MC_Launcher
 
             foreach (Server tServer in sm.GetServers())
             {
-                SvrCbBox.Items.Add(tServer.NAME);
+                //SvrCbBox.Items.Add(tServer.NAME);
+
+                StackPanel tPanel = new StackPanel();
+
+                TextBlock tName = new TextBlock();
+                tName.Text = tServer.NAME;
+
+                tPanel.Children.Add(tName);
+
+                SvrCbBox.Items.Add(tPanel);
             }
         }
 

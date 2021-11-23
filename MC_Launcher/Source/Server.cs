@@ -40,7 +40,7 @@ namespace MC_Launcher
 
             try
             {
-                if(File.Exists($"{AppDomain.CurrentDomain.BaseDirectory}\\svlst.txt")) 
+                if(!File.Exists($"{AppDomain.CurrentDomain.BaseDirectory}\\svlst.txt")) 
                 {
                     File.Create($"{AppDomain.CurrentDomain.BaseDirectory}\\svlst.txt");
                 }
