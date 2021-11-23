@@ -138,6 +138,15 @@ namespace MC_Launcher
             TYPE = list[(int)PropertyServer.TYPE];
         }
 
+        public Server(string _ip, int _port, string _version, string _name, string _type)
+        {
+            IP = _ip;
+            PORT = _port;
+            VERSION = _version;
+            NAME = _name;
+            TYPE = _type;
+        }
+
         public override string ToString()
         {
             return $"{IP},{PORT},{VERSION},{NAME},{TYPE}";

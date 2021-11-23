@@ -173,6 +173,11 @@ namespace MC_Launcher
             modsBtn.Visibility = Visibility.Visible;
         }
 
+        private void serverAddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            sm.AddServer(new Server("192.168.0.1", 9100, "1.16.5", "TEST", "T"));
+        }
+
         #endregion
 
         #region [Button Animation]
@@ -315,6 +320,11 @@ namespace MC_Launcher
         {
             LoadConfig();
             sm.LoadServers();
+
+            foreach (Server tServer in sm.GetServers())
+            {
+                SvrCbBox.Items.Add(tServer.NAME);
+            }
         }
 
         private void Window_Closed(object sender, EventArgs e)
@@ -322,6 +332,7 @@ namespace MC_Launcher
             SaveConfig();
             sm.SaveServers();
         }
+
 
         #endregion
 
@@ -482,5 +493,7 @@ namespace MC_Launcher
         }
 
         #endregion
+
+        
     }
 }
