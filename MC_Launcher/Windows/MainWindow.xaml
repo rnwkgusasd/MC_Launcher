@@ -138,8 +138,16 @@
 
                             <Border Name="serverVersionBackground" CornerRadius="18.5" Grid.ColumnSpan="2" Background="#CC000000" Visibility="Hidden" />
 
-                            <Grid x:Name="serverPopup" Margin="266,87,275,111" Grid.ColumnSpan="2" Background="#FF606272" Visibility="Hidden">
-                                <Button x:Name="serverOKBtn" Margin="10,250,10,10" Click="serverOKBtn_Click">OK</Button>
+                            <Grid x:Name="serverPopup" Margin="266,87,275,111" Grid.ColumnSpan="2" Background="#FF606272" Visibility="Visible">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="103*"/>
+                                    <RowDefinition Height="199*"/>
+                                </Grid.RowDefinitions>
+                                <ComboBox x:Name="SvrCbBox" Margin="20,43,20,10">
+                                    
+                                </ComboBox>
+                                <Button x:Name="serverAddBtn" Margin="100,50,100,93" Grid.Row="1" Background="#FF606272" BorderBrush="#FF363636" Foreground="White" FontWeight="Bold" FontSize="17">ADD</Button>
+                                <Button x:Name="serverOKBtn" Margin="10,147,10,10" Click="serverOKBtn_Click" Background="#FF606272" BorderBrush="{x:Null}" Foreground="White" FontWeight="Bold" FontSize="20" Grid.Row="1">OK</Button>
                             </Grid>
 
                             <Grid x:Name="versionPopup" Margin="266,87,275,111" Grid.ColumnSpan="2" Background="#FF606272" Visibility="Hidden">
