@@ -61,6 +61,9 @@ namespace MC_Launcher
                 //if (!mine.Login(ID.Text, PWD.Password))
                 //{
                 //    loadingLogin.Visibility = Visibility.Hidden;
+
+                //    MessageBox.Show("ID와 Password를 확인해주세요..", "LOGIN", MessageBoxButton.OK);
+
                 //    return;
                 //}
                 //else imgSkin.Source = api.GetSkinFromAPI(mine.UUID);
@@ -71,6 +74,8 @@ namespace MC_Launcher
             }
             else
             {
+                MessageBox.Show("ID와 Password를 입력해주세요.", "LOGIN", MessageBoxButton.OK);
+
                 return;
             }
         }
@@ -115,6 +120,8 @@ namespace MC_Launcher
         {
             if(selectedServer == null)
             {
+                MessageBox.Show("서버를 선택 해주세요.", "GAME", MessageBoxButton.OK);
+
                 return;
             }
 
@@ -539,6 +546,11 @@ namespace MC_Launcher
                 tCbi.Content = tPanel;
 
                 SvrCbBox.Items.Add(tCbi);
+
+                if(selectedServer == null)
+                {
+                    SvrCbBox.SelectedIndex = 0;
+                }
             }
         }
 
