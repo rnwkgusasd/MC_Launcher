@@ -143,7 +143,7 @@
                                     <RowDefinition Height="103*"/>
                                     <RowDefinition Height="199*"/>
                                 </Grid.RowDefinitions>
-                                <ComboBox x:Name="SvrCbBox" Margin="20,43,20,10">
+                                <ComboBox x:Name="SvrCbBox" Margin="20,43,20,10" SelectionChanged="SvrCbBox_SelectionChanged">
                                     <ComboBoxItem Background="#FF897FA2">
                                         <StackPanel Orientation="Vertical">
                                             <TextBlock Text="Minecraft Server 1" FontSize="15" FontWeight="Bold" />

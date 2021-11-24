@@ -36,6 +36,8 @@ namespace MC_Launcher
         public Source.AccessAPI api = new Source.AccessAPI();
         public Source.Minecraft mine = new Source.Minecraft();
 
+        public Server selectedServer;
+
         #endregion
 
         #region [Initialize]
@@ -66,8 +68,6 @@ namespace MC_Launcher
                 Storyboard sb = Resources["LoginBtn"] as Storyboard;
                 sb.Begin(SlidePanel);
                 loadingLogin.Visibility = Visibility.Hidden;
-
-                mine.FindForgeVersion("1.16.2");
             }
             else
             {
@@ -113,7 +113,12 @@ namespace MC_Launcher
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            p = mine.Start("1.16.5");
+            if(selectedServer == null)
+            {
+                return;
+            }
+
+            p = mine.Start(selectedServer);
 
             startBtn.IsEnabled = false;
 
@@ -509,6 +514,13 @@ namespace MC_Launcher
                 tName.FontSize = 15;
                 tName.FontWeight = FontWeights.Bold;
 
+                string ip = tServer.IP;
+
+                if(tServer.PORT != 0)
+                {
+                    ip.Concat($":{tServer.PORT}");
+                }
+
                 TextBlock tIp = new TextBlock();
                 tIp.Text = tServer.IP;
 
@@ -530,8 +542,20 @@ namespace MC_Launcher
             }
         }
 
+
         #endregion
 
-        
+        private void SvrCbBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem item = (ComboBoxItem)SvrCbBox.SelectedItem;
+
+            StackPanel panel = (StackPanel)item.Content;
+
+            string name = ((TextBlock)panel.Children[0]).Text;
+
+            Server findServer = sm.GetServers().Find(x => x.NAME == name);
+
+            selectedServer = findServer;
+        }
     }
 }

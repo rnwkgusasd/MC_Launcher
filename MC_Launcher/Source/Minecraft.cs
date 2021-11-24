@@ -127,106 +127,106 @@ namespace MC_Launcher.Source
             return process;
         }
 
-        public Process Start(string version)
-        {
-            System.Net.ServicePointManager.DefaultConnectionLimit = 256;
+        //public Process Start(string version)
+        //{
+        //    System.Net.ServicePointManager.DefaultConnectionLimit = 256;
 
-            var _path = path;
-            var game = new MinecraftPath(_path);
+        //    var _path = path;
+        //    var game = new MinecraftPath(_path);
 
-            var launcher = new CMLauncher(game);
+        //    var launcher = new CMLauncher(game);
 
-            launcher.ProgressChanged += Download_Progress;
-            launcher.FileChanged += Download_ChangeFile;
+        //    launcher.ProgressChanged += Download_Progress;
+        //    launcher.FileChanged += Download_ChangeFile;
 
-            //var versionMeta = MVersionLoader.GetVersionMetadatas(game);
-            //var versionLocal = MVersionLoader.GetVersionMetadatasFromLocal(game);
+        //    //var versionMeta = MVersionLoader.GetVersionMetadatas(game);
+        //    //var versionLocal = MVersionLoader.GetVersionMetadatasFromLocal(game);
 
-            //var findMVersion = versionMeta.GetVersion(version);
+        //    //var findMVersion = versionMeta.GetVersion(version);
 
-            //if (findMVersion == null)
-            {
-                return null;
-            }
+        //    //if (findMVersion == null)
+        //    {
+        //        return null;
+        //    }
 
-            //var findLVersion = versionLocal.GetVersion(version);
+        //    //var findLVersion = versionLocal.GetVersion(version);
 
-            //if (findLVersion == null)
-            {
-                //MDownloader downloader = new MDownloader(game, findMVersion);
+        //    //if (findLVersion == null)
+        //    //{
+        //        //MDownloader downloader = new MDownloader(game, findMVersion);
 
-                //downloader.ChangeFile += Download_ChangeFile;
-                //downloader.ChangeProgress += Download_Progress;
+        //        //downloader.ChangeFile += Download_ChangeFile;
+        //        //downloader.ChangeProgress += Download_Progress;
 
-                //downloader.DownloadAll();
-            }
+        //        //downloader.DownloadAll();
+        //    //}
 
-            var launchOption = new MLaunchOption
-            {
-                MaximumRamMb = 2048,
-                Session = se,
-                Path = game,
-                //StartVersion = findLVersion,
-                GameLauncherName = "JML",
-                GameLauncherVersion = "1.0"
-            };
+        //    var launchOption = new MLaunchOption
+        //    {
+        //        MaximumRamMb = 2048,
+        //        Session = se,
+        //        Path = game,
+        //        //StartVersion = findLVersion,
+        //        GameLauncherName = "JML",
+        //        GameLauncherVersion = "1.0"
+        //    };
 
-            var process = launcher.CreateProcess(launchOption);
-            process.Start();
+        //    var process = launcher.CreateProcess(launchOption);
+        //    process.Start();
 
-            return process;
-        }
+        //    return process;
+        //}
 
-        public bool Start(string path, string version, string _ip, int _port, int _ram)
-        {
-            System.Net.ServicePointManager.DefaultConnectionLimit = 256;
+        //public bool Start(string path, string version, string _ip, int _port, int _ram)
+        //{
+        //    System.Net.ServicePointManager.DefaultConnectionLimit = 256;
 
-            ip = _ip;
-            port = _port;
-            ram = _ram;
+        //    ip = _ip;
+        //    port = _port;
+        //    ram = _ram;
 
-            var game = new MinecraftPath(path);
-            //var launcher = new CMLauncher(game);
+        //    var game = new MinecraftPath(path);
+        //    //var launcher = new CMLauncher(game);
 
-            //var versionMeta = MVersionLoader.GetVersionMetadatas(game);
-            //var versionLocal = MVersionLoader.GetVersionMetadatasFromLocal(game);
+        //    //var versionMeta = MVersionLoader.GetVersionMetadatas(game);
+        //    //var versionLocal = MVersionLoader.GetVersionMetadatasFromLocal(game);
 
-            //var findMVersion = versionMeta.GetVersion(version);
+        //    //var findMVersion = versionMeta.GetVersion(version);
 
-            //if (findMVersion == null)
-            {
-                return false;
-            }
+        //    //if (findMVersion == null)
+        //    {
+        //        return false;
+        //    }
 
-            //var findLVersion = versionLocal.GetVersion(version);
+        //    //var findLVersion = versionLocal.GetVersion(version);
 
-            //if(findLVersion == null)
-            //{
-            //    MDownloader downloader = new MDownloader(game, findMVersion);
+        //    //if(findLVersion == null)
+        //    //{
+        //    //    MDownloader downloader = new MDownloader(game, findMVersion);
 
-            //    downloader.ChangeFile += Download_ChangeFile;
-            //    downloader.ChangeProgress += Download_Progress;
+        //    //    downloader.ChangeFile += Download_ChangeFile;
+        //    //    downloader.ChangeProgress += Download_Progress;
 
-            //    downloader.DownloadAll();
-            //}
+        //    //    downloader.DownloadAll();
+        //    //}
 
-            var launchOption = new MLaunchOption
-            {
-                Path = game,
-                //StartVersion = findLVersion,
-                Session = se,
-                MaximumRamMb = ram,
-                //ServerIp = ip,
-                //ServerPort = port,
-                GameLauncherName = "JML"
-            };
+        //    var launchOption = new MLaunchOption
+        //    {
+        //        Path = game,
+        //        //StartVersion = findLVersion,
+        //        Session = se,
+        //        MaximumRamMb = ram,
+        //        //ServerIp = ip,
+        //        //ServerPort = port,
+        //        GameLauncherName = "JML"
+        //    };
             
-            //var process = launcher.CreateProcess(version, launchOption);
-            var launch = new MLaunch(launchOption);
-            var process = launch.GetProcess();
+        //    //var process = launcher.CreateProcess(version, launchOption);
+        //    var launch = new MLaunch(launchOption);
+        //    var process = launch.GetProcess();
 
-            return process.Start();
-        }
+        //    return process.Start();
+        //}
 
         private void Download_ChangeFile(DownloadFileChangedEventArgs e)
         {
