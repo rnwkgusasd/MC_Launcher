@@ -56,16 +56,18 @@ namespace MC_Launcher
             {
                 loadingLogin.Visibility = Visibility.Visible;
 
-                if (!mine.Login(ID.Text, PWD.Password))
-                {
-                    loadingLogin.Visibility = Visibility.Hidden;
-                    return;
-                }
-                else imgSkin.Source = api.GetSkinFromAPI(mine.UUID);
+                //if (!mine.Login(ID.Text, PWD.Password))
+                //{
+                //    loadingLogin.Visibility = Visibility.Hidden;
+                //    return;
+                //}
+                //else imgSkin.Source = api.GetSkinFromAPI(mine.UUID);
 
                 Storyboard sb = Resources["LoginBtn"] as Storyboard;
                 sb.Begin(SlidePanel);
                 loadingLogin.Visibility = Visibility.Hidden;
+
+                mine.FindForgeVersion("1.16.2");
             }
             else
             {
@@ -175,7 +177,9 @@ namespace MC_Launcher
 
         private void serverAddBtn_Click(object sender, RoutedEventArgs e)
         {
-            sm.AddServer(new Server("192.168.0.1", 9100, "1.16.5", "TEST", "T"));
+            sm.AddServer(new Server("192.168.0.1", 9100, "1.16.5", "TEST", "forge"));
+
+            UpdateServerList();
         }
 
         #endregion
@@ -321,19 +325,7 @@ namespace MC_Launcher
             LoadConfig();
             sm.LoadServers();
 
-            foreach (Server tServer in sm.GetServers())
-            {
-                //SvrCbBox.Items.Add(tServer.NAME);
-
-                StackPanel tPanel = new StackPanel();
-
-                TextBlock tName = new TextBlock();
-                tName.Text = tServer.NAME;
-
-                tPanel.Children.Add(tName);
-
-                SvrCbBox.Items.Add(tPanel);
-            }
+            UpdateServerList();
         }
 
         private void Window_Closed(object sender, EventArgs e)
@@ -477,6 +469,8 @@ namespace MC_Launcher
             {
                 mcPath.Text = mine.GetDefaultPath();
             }
+
+            mine.PATH = mcPath.Text;
         }
 
         public bool ImageSizeCheck(Image _img, int _width, int _height)
@@ -497,7 +491,42 @@ namespace MC_Launcher
 
             if(ImageSizeCheck(img, 64, 64))
             {
-                //api.SetSkinFromAPI(mine.ACCESS_TOKEN, "");
+                api.SetSkinFromAPI(mine.ACCESS_TOKEN, "");
+            }
+        }
+
+        public void UpdateServerList()
+        {
+            foreach (Server tServer in sm.GetServers())
+            {
+                //SvrCbBox.Items.Add(tServer.NAME);
+
+                StackPanel tPanel = new StackPanel();
+                tPanel.Orientation = Orientation.Vertical;
+
+                TextBlock tName = new TextBlock();
+                tName.Text = tServer.NAME;
+                tName.FontSize = 15;
+                tName.FontWeight = FontWeights.Bold;
+
+                TextBlock tIp = new TextBlock();
+                tIp.Text = tServer.IP;
+
+                TextBlock tVersion = new TextBlock();
+                tVersion.Text = tServer.VERSION;
+
+                tPanel.Children.Add(tName);
+                tPanel.Children.Add(tIp);
+                tPanel.Children.Add(tVersion);
+
+                ComboBoxItem tCbi = new ComboBoxItem();
+
+                BrushConverter tBc = new BrushConverter();
+
+                tCbi.Background = (Brush)tBc.ConvertFrom("#FF897FA2");
+                tCbi.Content = tPanel;
+
+                SvrCbBox.Items.Add(tCbi);
             }
         }
 
