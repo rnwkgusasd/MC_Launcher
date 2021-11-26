@@ -270,17 +270,14 @@ namespace MC_Launcher.Source
                 else return false;
             });
 
+            if(extractVersion.Count == 0)
+            {
+                return "";
+            }
+
+            forgeVersion = extractVersion[0];
+
             return forgeVersion;
-        }
-
-        private void Forge_InstallerOutput(object sender, string e)
-        {
-            //throw new NotImplementedException();
-        }
-
-        private void Forge_FileChanged(DownloadFileChangedEventArgs e)
-        {
-            //throw new NotImplementedException();
         }
     }
 }
