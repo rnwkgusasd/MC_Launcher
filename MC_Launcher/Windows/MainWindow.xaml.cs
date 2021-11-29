@@ -56,6 +56,12 @@ namespace MC_Launcher
 
         private void SvrCbBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (SvrCbBox.Items.Count == 0)
+            {
+                selectedServer = null;
+                return;
+            }
+
             ComboBoxItem item = (ComboBoxItem)SvrCbBox.SelectedItem;
 
             StackPanel panel = (StackPanel)item.Content;
@@ -255,9 +261,20 @@ namespace MC_Launcher
                 return;
             }
 
+            if(sm.GetServers().Find(x => x.NAME == name) != null)
+            {
+                return;
+            }
+
             sm.AddServer(new Server(ip, int_port, version, name, type));
 
             UpdateServerList();
+
+            serverAddIP.Text = "";
+            serverAddPort.Text = "";
+            serverAddName.Text = "";
+            serverAddVersion.Text = "";
+            serverAddType.IsChecked = false;
 
             serverAddPopup.Visibility = Visibility.Hidden;
         }
@@ -632,6 +649,9 @@ namespace MC_Launcher
                 TextBlock tVersion = new TextBlock();
                 tVersion.Text = tServer.VERSION;
 
+                Button tRemove = new Button();
+                tRemove.Click += TRemove_Click;
+
                 tPanel.Children.Add(tName);
                 tPanel.Children.Add(tIp);
                 tPanel.Children.Add(tVersion);
@@ -650,11 +670,25 @@ namespace MC_Launcher
             }
         }
 
+        private void TRemove_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            StackPanel pa = (StackPanel)btn.Parent;
+
+            string name = ((TextBlock)pa.Children[0]).Text;
+
+            Server findServer = sm.GetServers().Find(x => x.NAME == name);
+            sm.GetServers().Remove(findServer);
+
+            UpdateServerList();
+        }
+
         public void UpdateVersionList()
         {
             foreach(string version in mine.GetAllReleaseVersion())
             {
                 serverAddVersion.Items.Add(version);
+                VerCbBox.Items.Add(version);
             }
         }
 
