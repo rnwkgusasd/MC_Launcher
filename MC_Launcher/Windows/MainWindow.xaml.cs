@@ -22,6 +22,7 @@ using System.Timers;
 using System.Management;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
+using System.Runtime.InteropServices;
 
 namespace MC_Launcher
 {
@@ -39,6 +40,8 @@ namespace MC_Launcher
         public Source.Minecraft mine = new Source.Minecraft();
 
         public Server selectedServer;
+
+        public int MAX_RAM = 0;
 
         #endregion
 
@@ -419,6 +422,8 @@ namespace MC_Launcher
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            Init();
+
             LoadConfig();
             sm.LoadServers();
 
@@ -436,6 +441,15 @@ namespace MC_Launcher
         #endregion
 
         #region [Function]
+
+        public void Init()
+        {
+            ulong _ram = 0;
+
+            SafeNativeMethods.GetPhysicallyInstalledSystemMemory(out _ram);
+
+            MAX_RAM = (int)_ram / (1024 * 1024);
+        }
 
         public void ProcessFunction(object sender, ElapsedEventArgs e)
         {
@@ -544,8 +558,18 @@ namespace MC_Launcher
 
             cfg_val = config;
 
+            int load_ram = int.Parse(config[(int)PropertySettings.MC_RAM]);
+
+            if(load_ram > MAX_RAM)
+            {
+                mcRam.Text = MAX_RAM.ToString();
+            }
+            else
+            {
+                mcRam.Text = load_ram.ToString();
+            }
+
             mcPath.Text = config[(int)PropertySettings.MC_PATH];
-            mcRam.Text = config[(int)PropertySettings.MC_RAM];
             // not already optifine checkbox
             //mcUseOptifine.IsChecked = bool.Parse(settings[(int)PropertySettings.MC_USE_OPTIFINE]);
 
@@ -577,6 +601,13 @@ namespace MC_Launcher
                 IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
                 invokeProv.Invoke();
             }
+        }
+
+        public class SafeNativeMethods
+        {
+            [DllImport("kernel32.dll", SetLastError = true)]
+            [return: MarshalAs(UnmanagedType.Bool)]
+            public static extern bool GetPhysicallyInstalledSystemMemory(out ulong MemoryInKilobytes);
         }
 
         public bool ImageSizeCheck(Image _img, int _width, int _height)
@@ -699,5 +730,15 @@ namespace MC_Launcher
         }
 
         #endregion
+
+        private void mcRam_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            int txtRam = int.Parse(mcRam.Text);
+
+            if(txtRam > MAX_RAM)
+            {
+                mcRam.Text = MAX_RAM.ToString();
+            }
+        }
     }
 }

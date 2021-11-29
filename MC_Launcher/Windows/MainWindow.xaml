@@ -207,7 +207,7 @@
                                             <Button x:Name="fileDialogBtn" Margin="419,61,10,252" Click="fileDialogBtn_Click">...</Button>
                                             <TextBlock FontSize="20" Height="30" Margin="10,111,394,209">RAM</TextBlock>
                                             <TextBlock FontSize="20" Height="30" Margin="177,118,246,202">Gb</TextBlock>
-                                            <TextBox x:Name="mcRam" TextWrapping="Wrap" Margin="63,111,280,202" Background="White" TextAlignment="Right"/>
+                                            <TextBox x:Name="mcRam" TextWrapping="Wrap" Margin="63,111,280,202" Background="White" TextAlignment="Right" TextChanged="mcRam_TextChanged"/>
                                         </Grid>
                                     </TabItem>
                                 </TabControl>
