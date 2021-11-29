@@ -257,18 +257,13 @@ namespace MC_Launcher.Source
 
             List<string> extractVersion = new List<string>();
 
-            vm.Select(x =>
+            foreach(MVersionMetadata item in vm)
             {
-                string _name = x.Name;
-
-                if (_name.Contains(version) && _name.Contains("forge"))
+                if(item.Name.Contains(version) && item.Name.Contains("forge"))
                 {
-                    extractVersion.Add(x.Name);
-
-                    return true;
+                    extractVersion.Add(item.Name);
                 }
-                else return false;
-            });
+            }
 
             if(extractVersion.Count == 0)
             {
@@ -278,6 +273,23 @@ namespace MC_Launcher.Source
             forgeVersion = extractVersion[0];
 
             return forgeVersion;
+        }
+
+        public List<string> GetAllReleaseVersion()
+        {
+            List<string> versions = new List<string>();
+
+            var vm = new MojangVersionLoader().GetVersionMetadatas();
+
+            foreach(MVersionMetadata item in vm)
+            {
+                if(item.MType == MVersionType.Release)
+                {
+                    versions.Add(item.Name);
+                }
+            }
+
+            return versions;
         }
     }
 }

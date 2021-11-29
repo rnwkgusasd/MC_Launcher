@@ -50,6 +50,23 @@ namespace MC_Launcher
 
         #endregion
 
+        #region [Contol Event]
+
+        private void SvrCbBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem item = (ComboBoxItem)SvrCbBox.SelectedItem;
+
+            StackPanel panel = (StackPanel)item.Content;
+
+            string name = ((TextBlock)panel.Children[0]).Text;
+
+            Server findServer = sm.GetServers().Find(x => x.NAME == name);
+
+            selectedServer = findServer;
+        }
+
+        #endregion
+
         #region [Button Click Event]
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
@@ -338,6 +355,7 @@ namespace MC_Launcher
             sm.LoadServers();
 
             UpdateServerList();
+            UpdateVersionList();
         }
 
         private void Window_Closed(object sender, EventArgs e)
@@ -554,20 +572,15 @@ namespace MC_Launcher
             }
         }
 
+        public void UpdateVersionList()
+        {
+            foreach(string version in mine.GetAllReleaseVersion())
+            {
+                serverAddVersion.Items.Add(version);
+            }
+        }
+
 
         #endregion
-
-        private void SvrCbBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ComboBoxItem item = (ComboBoxItem)SvrCbBox.SelectedItem;
-
-            StackPanel panel = (StackPanel)item.Content;
-
-            string name = ((TextBlock)panel.Children[0]).Text;
-
-            Server findServer = sm.GetServers().Find(x => x.NAME == name);
-
-            selectedServer = findServer;
-        }
     }
 }
