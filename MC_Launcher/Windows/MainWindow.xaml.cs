@@ -206,9 +206,51 @@ namespace MC_Launcher
 
         private void serverAddBtn_Click(object sender, RoutedEventArgs e)
         {
-            sm.AddServer(new Server("192.168.0.1", 9100, "1.16.5", "TEST", "forge"));
+            serverAddPopup.Visibility = Visibility.Visible;
+        }
+
+        private void serverAddBtnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            serverAddIP.Text = "";
+            serverAddPort.Text = "";
+            serverAddName.Text = "";
+            serverAddVersion.Text = "";
+            serverAddType.IsChecked = false;
+
+            serverAddPopup.Visibility = Visibility.Hidden;
+        }
+
+        private void serverAddBtnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            string ip = serverAddIP.Text;
+            string port = serverAddPort.Text;
+            string name = serverAddName.Text;
+            string version = serverAddVersion.Text;
+            string type = serverAddType.IsChecked == true ? "Forge" : "Vanila";
+
+            if (ip == "")
+            {
+                return;
+            }
+
+            int int_port = 0;
+            int.TryParse(port, out int_port);
+
+            if (name == "")
+            {
+                return;
+            }
+
+            if (version == "")
+            {
+                return;
+            }
+
+            sm.AddServer(new Server(ip, int_port, version, name, type));
 
             UpdateServerList();
+
+            serverAddPopup.Visibility = Visibility.Hidden;
         }
 
         #endregion
@@ -527,6 +569,8 @@ namespace MC_Launcher
 
         public void UpdateServerList()
         {
+            SvrCbBox.Items.Clear();
+
             foreach (Server tServer in sm.GetServers())
             {
                 //SvrCbBox.Items.Add(tServer.NAME);
@@ -579,7 +623,6 @@ namespace MC_Launcher
                 serverAddVersion.Items.Add(version);
             }
         }
-
 
         #endregion
     }
