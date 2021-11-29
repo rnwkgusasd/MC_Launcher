@@ -651,10 +651,16 @@ namespace MC_Launcher
 
                 Button tRemove = new Button();
                 tRemove.Click += TRemove_Click;
+                tRemove.Width = 20;
+                tRemove.Height = 20;
+                tRemove.HorizontalAlignment = HorizontalAlignment.Left;
+                tRemove.Background = (Brush)tBc.ConvertFrom("#FF897FA2");
+                tRemove.Content = "🗑";
 
                 tPanel.Children.Add(tName);
                 tPanel.Children.Add(tIp);
                 tPanel.Children.Add(tVersion);
+                tPanel.Children.Add(tRemove);
 
                 ComboBoxItem tCbi = new ComboBoxItem();
 
