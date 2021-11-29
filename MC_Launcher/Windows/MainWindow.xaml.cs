@@ -60,6 +60,12 @@ namespace MC_Launcher
 
             StackPanel panel = (StackPanel)item.Content;
 
+            if(panel.Children.Count == 1)
+            {
+                selectedServer = null;
+                return;
+            }
+
             string name = ((TextBlock)panel.Children[0]).Text;
 
             Server findServer = sm.GetServers().Find(x => x.NAME == name);
@@ -139,13 +145,14 @@ namespace MC_Launcher
         {
             if(selectedServer == null)
             {
-                MessageBox.Show("서버를 선택 해주세요.", "GAME", MessageBoxButton.OK);
-
-                return;
+                //MessageBox.Show("서버를 선택 해주세요.", "GAME", MessageBoxButton.OK);
+                p = mine.Start("");
             }
-
-            p = mine.Start(selectedServer);
-
+            else
+            {
+                p = mine.Start(selectedServer);
+            }
+            
             startBtn.IsEnabled = false;
 
             t = new System.Timers.Timer(500);
@@ -581,6 +588,25 @@ namespace MC_Launcher
         {
             SvrCbBox.Items.Clear();
 
+            StackPanel noServerPanel = new StackPanel();
+            noServerPanel.Orientation = Orientation.Vertical;
+
+            TextBlock noServer = new TextBlock();
+            noServer.Text = "No Server";
+            noServer.FontSize = 15;
+            noServer.FontWeight = FontWeights.Bold;
+
+            noServerPanel.Children.Add(noServer);
+
+            ComboBoxItem defaultItem = new ComboBoxItem();
+
+            BrushConverter tBc = new BrushConverter();
+
+            defaultItem.Background = (Brush)tBc.ConvertFrom("#FF897FA2");
+            defaultItem.Content = noServerPanel;
+
+            SvrCbBox.Items.Add(defaultItem);
+
             foreach (Server tServer in sm.GetServers())
             {
                 //SvrCbBox.Items.Add(tServer.NAME);
@@ -611,8 +637,6 @@ namespace MC_Launcher
                 tPanel.Children.Add(tVersion);
 
                 ComboBoxItem tCbi = new ComboBoxItem();
-
-                BrushConverter tBc = new BrushConverter();
 
                 tCbi.Background = (Brush)tBc.ConvertFrom("#FF897FA2");
                 tCbi.Content = tPanel;

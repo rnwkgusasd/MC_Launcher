@@ -127,6 +127,59 @@ namespace MC_Launcher.Source
             return process;
         }
 
+        public Process Start(string _version)
+        {
+            System.Net.ServicePointManager.DefaultConnectionLimit = 256;
+
+            var game = new MinecraftPath(path);
+            var launcher = new CMLauncher(game);
+
+            launcher.ProgressChanged += Download_Progress;
+            launcher.FileChanged += Download_ChangeFile;
+
+            var lv = new LocalVersionLoader(game).GetVersionMetadatas();
+
+            var findVersion = lv.GetVersion(_version);
+
+            if (findVersion == null)
+            {
+                var findMVersion = lv.GetVersionMetadata(_version);
+
+                if (findMVersion != null)
+                {
+                    findMVersion.Save(game);
+                }
+                else
+                {
+                    var findWVersion = new MojangVersionLoader().GetVersionMetadatas().GetVersionMetadata(_version);
+
+                    if (findWVersion != null)
+                    {
+                        findWVersion.Save(game);
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+            }
+
+            var launchOption = new MLaunchOption
+            {
+                MaximumRamMb = ram,
+                Session = se,
+                Path = game,
+                StartVersion = findVersion,
+                GameLauncherName = "JML",
+                GameLauncherVersion = "1.0"
+            };
+
+            var process = launcher.CreateProcess(launchOption);
+            process.Start();
+
+            return process;
+        }
+
         //public Process Start(string version)
         //{
         //    System.Net.ServicePointManager.DefaultConnectionLimit = 256;
@@ -220,7 +273,7 @@ namespace MC_Launcher.Source
         //        //ServerPort = port,
         //        GameLauncherName = "JML"
         //    };
-            
+
         //    //var process = launcher.CreateProcess(version, launchOption);
         //    var launch = new MLaunch(launchOption);
         //    var process = launch.GetProcess();
