@@ -733,7 +733,8 @@ namespace MC_Launcher
 
         private void mcRam_TextChanged(object sender, TextChangedEventArgs e)
         {
-            int txtRam = int.Parse(mcRam.Text);
+            int txtRam = 0;
+            int.TryParse(mcRam.Text, out txtRam);
 
             if(txtRam > MAX_RAM)
             {
