@@ -20,6 +20,8 @@ using System.IO;
 using System.Diagnostics;
 using System.Timers;
 using System.Management;
+using System.Windows.Automation.Peers;
+using System.Windows.Automation.Provider;
 
 namespace MC_Launcher
 {
@@ -442,20 +444,21 @@ namespace MC_Launcher
 
         public enum PropertySettings
         {
-            ID, ID_SAVE, MC_PATH, MC_RAM, MC_USE_OPTIFINE
+            ID, PWD, ID_SAVE, MC_PATH, MC_RAM, MC_USE_OPTIFINE
         }
 
         public void SaveConfig()
         {
             List<string> config = new List<string>();
 
-            string _id, _idSave, _mcPath, _mcRam, _mcUseOptifine;
+            string _id, _idSave, _mcPath, _mcRam, _mcUseOptifine, _pwd;
 
             _id = ID.Text;
             _idSave = IDsave.IsChecked.ToString();
             _mcPath = mcPath.Text;
             _mcRam = mcRam.Text;
             _mcUseOptifine = "False";
+            _pwd = PWD.Password;
 
             if (_mcRam == "") _mcRam = "2";
 
@@ -478,11 +481,13 @@ namespace MC_Launcher
             if (IDsave.IsChecked == true)
             {
                 config.Add($"{PropertySettings.ID}={_id}");
+                config.Add($"{PropertySettings.PWD}={_pwd}");
                 config.Add($"{PropertySettings.ID_SAVE}={_idSave}");
             }
             else
             {
                 config.Add($"{PropertySettings.ID}=");
+                config.Add($"{PropertySettings.PWD}=");
                 config.Add($"{PropertySettings.ID_SAVE}=False");
             }
 
@@ -519,6 +524,7 @@ namespace MC_Launcher
             {
                 IDsave.IsChecked = true;
                 ID.Text = config[(int)PropertySettings.ID];
+                PWD.Password = config[(int)PropertySettings.PWD];
             }
 
             mcPath.Text = config[(int)PropertySettings.MC_PATH];
@@ -543,6 +549,10 @@ namespace MC_Launcher
             }
 
             mine.PATH = mcPath.Text;
+
+            ButtonAutomationPeer peer = new ButtonAutomationPeer(LoginBtn);
+            IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+            invokeProv.Invoke();
         }
 
         public bool ImageSizeCheck(Image _img, int _width, int _height)
