@@ -149,21 +149,21 @@ namespace MC_Launcher
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            if(selectedServer == null)
-            {
-                //MessageBox.Show("서버를 선택 해주세요.", "GAME", MessageBoxButton.OK);
-                p = mine.Start("");
-            }
-            else
-            {
-                p = mine.Start(selectedServer);
-            }
+            //if(selectedServer == null)
+            //{
+            //    //MessageBox.Show("서버를 선택 해주세요.", "GAME", MessageBoxButton.OK);
+            //    p = mine.Start("");
+            //}
+            //else
+            //{
+            //    p = mine.Start(selectedServer);
+            //}
             
-            startBtn.IsEnabled = false;
+            //startBtn.IsEnabled = false;
 
-            t = new System.Timers.Timer(500);
-            t.Elapsed += ProcessFunction;
-            t.Start();
+            //t = new System.Timers.Timer(500);
+            //t.Elapsed += ProcessFunction;
+            //t.Start();
         }
 
         private void serverBtn_Click(object sender, RoutedEventArgs e)
@@ -544,13 +544,6 @@ namespace MC_Launcher
 
             cfg_val = config;
 
-            if (bool.Parse(config[(int)PropertySettings.ID_SAVE]))
-            {
-                IDsave.IsChecked = true;
-                ID.Text = config[(int)PropertySettings.ID];
-                PWD.Password = config[(int)PropertySettings.PWD];
-            }
-
             mcPath.Text = config[(int)PropertySettings.MC_PATH];
             mcRam.Text = config[(int)PropertySettings.MC_RAM];
             // not already optifine checkbox
@@ -574,9 +567,16 @@ namespace MC_Launcher
 
             mine.PATH = mcPath.Text;
 
-            ButtonAutomationPeer peer = new ButtonAutomationPeer(LoginBtn);
-            IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
-            invokeProv.Invoke();
+            if (bool.Parse(config[(int)PropertySettings.ID_SAVE]))
+            {
+                IDsave.IsChecked = true;
+                ID.Text = config[(int)PropertySettings.ID];
+                PWD.Password = config[(int)PropertySettings.PWD];
+
+                ButtonAutomationPeer peer = new ButtonAutomationPeer(LoginBtn);
+                IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+                invokeProv.Invoke();
+            }
         }
 
         public bool ImageSizeCheck(Image _img, int _width, int _height)
