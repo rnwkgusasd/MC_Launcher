@@ -717,6 +717,11 @@ namespace MC_Launcher
             Server findServer = sm.GetServers().Find(x => x.NAME == name);
             sm.GetServers().Remove(findServer);
 
+            if(selectedServer.NAME == findServer.NAME)
+            {
+                selectedServer = null;
+            }
+
             UpdateServerList();
         }
 
