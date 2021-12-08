@@ -229,8 +229,8 @@ namespace MC_Launcher
 
         private void modsOKBtn_Click(object sender, RoutedEventArgs e)
         {
-            serverVersionBackground.Visibility = Visibility.Visible;
-            modsBtn.Visibility = Visibility.Visible;
+            serverVersionBackground.Visibility = Visibility.Hidden;
+            modsPopup.Visibility = Visibility.Hidden;
         }
 
         private void serverAddBtn_Click(object sender, RoutedEventArgs e)
