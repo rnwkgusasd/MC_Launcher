@@ -489,13 +489,13 @@ namespace MC_Launcher
         {
             List<string> config = new List<string>();
 
-            string _id, _idSave, _mcPath, _mcRam, _mcUseOptifine, _pwd;
+            string _id, _idSave, _mcPath, _mcRam, _mcOptifine, _pwd;
 
             _id = ID.Text;
             _idSave = IDsave.IsChecked.ToString();
             _mcPath = mcPath.Text;
             _mcRam = mcRam.Text;
-            _mcUseOptifine = "False";
+            _mcOptifine = mcOptifine.IsChecked.ToString();
             _pwd = PWD.Password;
 
             if (_mcRam == "") _mcRam = "2";
@@ -531,7 +531,7 @@ namespace MC_Launcher
 
             config.Add($"{PropertySettings.MC_PATH}={_mcPath}");
             config.Add($"{PropertySettings.MC_RAM}={_mcRam}");
-            config.Add($"{PropertySettings.MC_USE_OPTIFINE}={_mcUseOptifine}");
+            config.Add($"{PropertySettings.MC_USE_OPTIFINE}={_mcOptifine}");
 
             File.WriteAllLines($"{AppDomain.CurrentDomain.BaseDirectory}\\config.txt", config);
         }
@@ -570,8 +570,8 @@ namespace MC_Launcher
             }
 
             mcPath.Text = config[(int)PropertySettings.MC_PATH];
-            // not already optifine checkbox
-            //mcUseOptifine.IsChecked = bool.Parse(settings[(int)PropertySettings.MC_USE_OPTIFINE]);
+            
+            mcOptifine.IsChecked = bool.Parse(config[(int)PropertySettings.MC_USE_OPTIFINE]);
 
             ManagementObjectSearcher sys = new ManagementObjectSearcher("select * from Win32_VideoController");
 
