@@ -82,6 +82,17 @@ namespace MC_Launcher
             selectedServer = findServer;
         }
 
+        private void mcRam_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            int txtRam = 0;
+            int.TryParse(mcRam.Text, out txtRam);
+
+            if (txtRam > MAX_RAM)
+            {
+                mcRam.Text = MAX_RAM.ToString();
+            }
+        }
+
         #endregion
 
         #region [Button Click Event]
@@ -404,6 +415,41 @@ namespace MC_Launcher
         {
             modsImg.Margin = new Thickness(0, 0, 0, 0);
             modsTxt.Visibility = Visibility.Hidden;
+        }
+
+        private void startTxtClick(object sender, MouseButtonEventArgs e)
+        {
+            ButtonAutomationPeer peer = new ButtonAutomationPeer(startBtn);
+            IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+            invokeProv.Invoke();
+        }
+
+        private void serverTxt_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            ButtonAutomationPeer peer = new ButtonAutomationPeer(serverBtn);
+            IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+            invokeProv.Invoke();
+        }
+
+        private void versionTxt_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            ButtonAutomationPeer peer = new ButtonAutomationPeer(versionBtn);
+            IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+            invokeProv.Invoke();
+        }
+
+        private void optionTxt_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            ButtonAutomationPeer peer = new ButtonAutomationPeer(optionBtn);
+            IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+            invokeProv.Invoke();
+        }
+
+        private void modsTxt_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            ButtonAutomationPeer peer = new ButtonAutomationPeer(modsBtn);
+            IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+            invokeProv.Invoke();
         }
 
         #endregion
@@ -735,16 +781,5 @@ namespace MC_Launcher
         }
 
         #endregion
-
-        private void mcRam_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            int txtRam = 0;
-            int.TryParse(mcRam.Text, out txtRam);
-
-            if(txtRam > MAX_RAM)
-            {
-                mcRam.Text = MAX_RAM.ToString();
-            }
-        }
     }
 }

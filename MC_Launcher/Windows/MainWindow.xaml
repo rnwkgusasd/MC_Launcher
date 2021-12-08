@@ -129,11 +129,11 @@
                                 </Grid>
                             </Grid>
                             <Grid Margin="0, 70, 0, 20" Grid.ColumnSpan="2">
-                                <TextBlock x:Name="startTxt" Text="START" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="24" Visibility="Hidden" Margin="115,214,709,163" Width="76" Height="33" FontWeight="Bold" MouseEnter="startTxt_MouseEnter" MouseLeave="startTxt_MouseLeave" />
-                                <TextBlock x:Name="serverTxt" Text="SERVER" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="24" Visibility="Hidden" Height="32" Margin="400,129,392,249" Width="92" FontWeight="Bold" MouseEnter="serverTxt_MouseEnter" MouseLeave="serverTxt_MouseLeave" />
-                                <TextBlock x:Name="versionTxt" Text="VERSION" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="24" Visibility="Hidden" Height="35" Margin="395,310,382,65" Width="111" FontWeight="Bold" MouseLeave="versionTxt_MouseLeave" MouseEnter="versionTxt_MouseEnter" />
-                                <TextBlock x:Name="optionTxt" Text="OPTION" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="24" Visibility="Hidden" Height="35" Margin="708,104,102,271" Width="90" FontWeight="Bold" MouseEnter="optionTxt_MouseEnter" MouseLeave="optionTxt_MouseLeave" />
-                                <TextBlock x:Name="modsTxt" Text="MOD" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFB6B6B6" FontSize="24" Visibility="Hidden" Height="40" Margin="722,290,114,80" Width="64" FontWeight="Bold" MouseEnter="modsTxt_MouseEnter" MouseLeave="modsTxt_MouseLeave" />
+                                <TextBlock x:Name="startTxt" Text="START" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="24" Visibility="Hidden" Margin="115,214,709,163" Width="76" Height="33" FontWeight="Bold" MouseEnter="startTxt_MouseEnter" MouseLeave="startTxt_MouseLeave" MouseUp="startTxtClick" />
+                                <TextBlock x:Name="serverTxt" Text="SERVER" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="24" Visibility="Hidden" Height="32" Margin="400,129,392,249" Width="92" FontWeight="Bold" MouseEnter="serverTxt_MouseEnter" MouseLeave="serverTxt_MouseLeave" MouseUp="serverTxt_MouseUp" />
+                                <TextBlock x:Name="versionTxt" Text="VERSION" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="24" Visibility="Hidden" Height="35" Margin="395,310,382,65" Width="111" FontWeight="Bold" MouseLeave="versionTxt_MouseLeave" MouseEnter="versionTxt_MouseEnter" MouseUp="versionTxt_MouseUp" />
+                                <TextBlock x:Name="optionTxt" Text="OPTION" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="24" Visibility="Hidden" Height="35" Margin="708,104,102,271" Width="90" FontWeight="Bold" MouseEnter="optionTxt_MouseEnter" MouseLeave="optionTxt_MouseLeave" MouseUp="optionTxt_MouseUp" />
+                                <TextBlock x:Name="modsTxt" Text="MOD" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFB6B6B6" FontSize="24" Visibility="Hidden" Height="40" Margin="722,290,114,80" Width="64" FontWeight="Bold" MouseEnter="modsTxt_MouseEnter" MouseLeave="modsTxt_MouseLeave" MouseUp="modsTxt_MouseUp" />
                             </Grid>
 
                             <Border Name="serverVersionBackground" CornerRadius="18.5" Grid.ColumnSpan="2" Background="#CC000000" Visibility="Hidden" />
@@ -207,7 +207,7 @@
                                             <Button x:Name="fileDialogBtn" Margin="419,61,10,252" Click="fileDialogBtn_Click">...</Button>
                                             <TextBlock FontSize="20" Height="30" Margin="10,111,394,209">RAM</TextBlock>
                                             <TextBlock FontSize="20" Height="30" Margin="177,118,246,202">Gb</TextBlock>
-                                            <TextBox x:Name="mcRam" TextWrapping="Wrap" Margin="63,111,280,202" Background="White" TextAlignment="Right" TextChanged="mcRam_TextChanged"/>
+                                            <TextBox x:Name="mcRam" TextWrapping="Wrap" Margin="63,111,280,202" Background="White" TextAlignment="Right" TextChanged="mcRam_TextChanged" FontSize="20"/>
                                             <TextBlock FontSize="20" Margin="10,161,361,155">Optifine</TextBlock>
                                             <CheckBox x:Name="mcOptifine" Margin="100,170,335,162"></CheckBox>
                                         </Grid>
