@@ -189,7 +189,7 @@ namespace MC_Launcher
         private void modsBtn_Click(object sender, RoutedEventArgs e)
         {
             serverVersionBackground.Visibility = Visibility.Visible;
-            modsBtn.Visibility = Visibility.Visible;
+            modsPopup.Visibility = Visibility.Visible;
         }
 
         private void versionBtn_Click(object sender, RoutedEventArgs e)
