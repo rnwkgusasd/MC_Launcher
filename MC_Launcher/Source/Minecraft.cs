@@ -20,8 +20,6 @@ namespace MC_Launcher.Source
     {
         private MSession se;
 
-        private string ip = "";
-        private int port = 0;
         private int ram = 2048;
         private string path = "";
 
