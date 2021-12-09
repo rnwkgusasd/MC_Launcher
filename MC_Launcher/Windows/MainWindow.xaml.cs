@@ -164,6 +164,8 @@ namespace MC_Launcher
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
+            //mine.RAM = int.Parse(mcRam.Text);
+            
             //if(selectedServer == null)
             //{
             //    //MessageBox.Show("서버를 선택 해주세요.", "GAME", MessageBoxButton.OK);
