@@ -256,7 +256,7 @@ namespace MC_Launcher
             string port = serverAddPort.Text;
             string name = serverAddName.Text;
             string version = serverAddVersion.Text;
-            string type = serverAddType.IsChecked == true ? "Forge" : "Vanila";
+            string type = serverAddType.IsChecked == true ? "forge" : "vanila";
 
             if (ip == "")
             {
