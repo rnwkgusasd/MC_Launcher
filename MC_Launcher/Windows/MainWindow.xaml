@@ -169,11 +169,6 @@
                                 </ComboBox>
                                 <Button x:Name="versionOKBtn" Margin="30,200,30,10" Click="versionOKBtn_Click">OK</Button>
                             </Grid>
-
-                            <Grid x:Name="modsPopup" Margin="266,87,275,111" Grid.ColumnSpan="2" Background="#FF606272" Visibility="Hidden">
-                                <Button x:Name="modsOKBtn" Margin="10,250,10,10" Click="modsOKBtn_Click">OK</Button>
-                            </Grid>
-
                         </Grid>
                     </Border>
                 </Grid>

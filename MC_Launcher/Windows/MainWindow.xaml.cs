@@ -189,8 +189,16 @@ namespace MC_Launcher
 
         private void modsBtn_Click(object sender, RoutedEventArgs e)
         {
-            serverVersionBackground.Visibility = Visibility.Visible;
-            modsPopup.Visibility = Visibility.Visible;
+            DirectoryInfo modsFolder = new DirectoryInfo(Environment.CurrentDirectory + "\\mods");
+
+            if (!modsFolder.Exists) modsFolder.Create();
+
+            var p = new ProcessStartInfo(modsFolder.FullName)
+            {
+                UseShellExecute = true
+            };
+
+            Process.Start(p);
         }
 
         private void versionBtn_Click(object sender, RoutedEventArgs e)
@@ -226,12 +234,6 @@ namespace MC_Launcher
                     mcPath.Text = fd.SelectedPath; 
                 }
             }
-        }
-
-        private void modsOKBtn_Click(object sender, RoutedEventArgs e)
-        {
-            serverVersionBackground.Visibility = Visibility.Hidden;
-            modsPopup.Visibility = Visibility.Hidden;
         }
 
         private void serverAddBtn_Click(object sender, RoutedEventArgs e)
