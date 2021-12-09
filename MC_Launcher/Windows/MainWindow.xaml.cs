@@ -23,6 +23,7 @@ using System.Management;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
 using System.Runtime.InteropServices;
+using CmlLib.Core.Downloader;
 
 namespace MC_Launcher
 {
@@ -495,6 +496,9 @@ namespace MC_Launcher
             SafeNativeMethods.GetPhysicallyInstalledSystemMemory(out _ram);
 
             MAX_RAM = (int)_ram / (1024 * 1024);
+
+            mine.download_file_change += Download_File_Change;
+            mine.download_progress_change += Download_Progress_Change;
         }
 
         public void ProcessFunction(object sender, ElapsedEventArgs e)
@@ -778,6 +782,21 @@ namespace MC_Launcher
                 serverAddVersion.Items.Add(version);
                 VerCbBox.Items.Add(version);
             }
+        }
+
+        public void Download_Progress_Change(object sender, ProgressChangedEventArgs e)
+        {
+            int percent = e.ProgressPercentage;
+        }
+
+        public void Download_File_Change(DownloadFileChangedEventArgs e)
+        {
+            int total = e.TotalFileCount;
+            int progress = e.ProgressedFileCount;
+
+            string name = e.FileName;
+
+            string msg = $"Download({progress}/{total})... {{{name}}}";
         }
 
         #endregion
