@@ -138,12 +138,12 @@
 
                             <Border Name="serverVersionBackground" CornerRadius="18.5" Grid.ColumnSpan="2" Background="#CC000000" Visibility="Hidden" />
 
-                            <Grid x:Name="serverPopup" Margin="266,126,275,123" Grid.ColumnSpan="2" Background="#FF606272" Visibility="Hidden">
-                                <ComboBox x:Name="SvrCbBox" Margin="30,30,100,100" SelectionChanged="SvrCbBox_SelectionChanged">
+                            <Grid x:Name="serverPopup" Margin="266,150,275,150" Grid.ColumnSpan="2" Background="#FF606272" Visibility="Hidden">
+                                <ComboBox x:Name="SvrCbBox" Margin="30,30,100,80" SelectionChanged="SvrCbBox_SelectionChanged">
 
                                 </ComboBox>
-                                <Button x:Name="serverAddBtn" Margin="265,30,30,100" Grid.Row="1" Background="#FF606272" BorderBrush="#FF363636" Foreground="White" FontWeight="Bold" FontSize="17" Click="serverAddBtn_Click">ADD</Button>
-                                <Button x:Name="serverOKBtn" Margin="30,200,30,10" Click="serverOKBtn_Click" Background="#FF606272" BorderBrush="{x:Null}" Foreground="White" FontWeight="Bold" FontSize="20" Grid.Row="1">OK</Button>
+                                <Button x:Name="serverAddBtn" Margin="265,30,30,80" Grid.Row="1" Background="#FF606272" BorderBrush="#FF363636" Foreground="White" FontWeight="Bold" FontSize="17" Click="serverAddBtn_Click">ADD</Button>
+                                <Button x:Name="serverOKBtn" Margin="30,130,30,10" Click="serverOKBtn_Click" Background="#FF606272" BorderBrush="{x:Null}" Foreground="White" FontWeight="Bold" FontSize="20" Grid.Row="1">OK</Button>
                             </Grid>
 
                             <Grid x:Name="serverAddPopup" Margin="217,87,191,111" Grid.ColumnSpan="2" Background="#FF606272" Visibility="Hidden">
@@ -163,11 +163,11 @@
                                 <Button x:Name="serverAddBtnCancel" Content="Cacel" Width="200" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="30" Background="#FF606272" Foreground="White" FontWeight="Bold" FontSize="15" Click="serverAddBtnCancel_Click" />
                             </Grid>
 
-                            <Grid x:Name="versionPopup" Margin="266,126,275,123" Grid.ColumnSpan="2" Background="#FF606272" Visibility="Hidden">
-                                <ComboBox x:Name="VerCbBox" Margin="30,30,30,100">
+                            <Grid x:Name="versionPopup" Margin="266,150,275,150" Grid.ColumnSpan="2" Background="#FF606272" Visibility="Hidden">
+                                <ComboBox x:Name="VerCbBox" Margin="30,30,30,100" FontSize="20" VerticalContentAlignment="Center">
 
                                 </ComboBox>
-                                <Button x:Name="versionOKBtn" Margin="30,200,30,10" Click="versionOKBtn_Click">OK</Button>
+                                <Button x:Name="versionOKBtn" Margin="30,130,30,10" Click="versionOKBtn_Click" Background="#FF606272" BorderBrush="{x:Null}" Foreground="White" FontWeight="Bold" FontSize="20">OK</Button>
                             </Grid>
                         </Grid>
                     </Border>

@@ -57,6 +57,13 @@ namespace MC_Launcher.Source
             return true;
         }
 
+        public bool Logout()
+        {
+            login.DeleteTokenFile();
+            
+            return true;
+        }
+
         public Process Start(Server server)
         {
             System.Net.ServicePointManager.DefaultConnectionLimit = 256;

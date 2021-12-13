@@ -134,6 +134,8 @@ namespace MC_Launcher
             }
             PWD.Password = "";
 
+            mine.Logout();
+
             Storyboard sb = Resources["BackLogin"] as Storyboard;
             sb.Begin(SlidePanel);
         }
