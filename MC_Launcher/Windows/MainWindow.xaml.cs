@@ -592,6 +592,17 @@ namespace MC_Launcher
 
         public void LoadConfig()
         {
+            ManagementObjectSearcher sys = new ManagementObjectSearcher("select * from Win32_VideoController");
+
+            string graphicName = "";
+
+            foreach (ManagementObject obj in sys.Get())
+            {
+                graphicName = obj["Name"].ToString();
+            }
+
+            textBlockGraphic.Text = graphicName;
+
             List<string> config = new List<string>();
 
             if (!File.Exists($"{AppDomain.CurrentDomain.BaseDirectory}\\config.txt"))
@@ -626,17 +637,6 @@ namespace MC_Launcher
             mcPath.Text = config[(int)PropertySettings.MC_PATH];
             
             mcOptifine.IsChecked = bool.Parse(config[(int)PropertySettings.MC_USE_OPTIFINE]);
-
-            ManagementObjectSearcher sys = new ManagementObjectSearcher("select * from Win32_VideoController");
-
-            string graphicName = "";
-
-            foreach (ManagementObject obj in sys.Get())
-            {
-                graphicName = obj["Name"].ToString();
-            }
-
-            textBlockGraphic.Text = graphicName;
 
             if(mcPath.Text == "")
             {
