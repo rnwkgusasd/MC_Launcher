@@ -139,11 +139,11 @@
                             <Border Name="serverVersionBackground" CornerRadius="18.5" Grid.ColumnSpan="2" Background="#CC000000" Visibility="Hidden" />
 
                             <Grid x:Name="serverPopup" Margin="266,150,275,150" Grid.ColumnSpan="2" Background="#FF606272" Visibility="Hidden">
-                                <ComboBox x:Name="SvrCbBox" Margin="30,30,100,80" SelectionChanged="SvrCbBox_SelectionChanged">
+                                <ComboBox x:Name="SvrCbBox" Margin="30,30,100,80" SelectionChanged="SvrCbBox_SelectionChanged" Style="{StaticResource MaterialDesignComboBox}">
 
                                 </ComboBox>
                                 <Button x:Name="serverAddBtn" Margin="265,30,30,80" Grid.Row="1" Background="#FF606272" BorderBrush="#FF363636" Foreground="White" FontWeight="Bold" FontSize="17" Click="serverAddBtn_Click">ADD</Button>
-                                <Button x:Name="serverOKBtn" Margin="30,130,30,10" Click="serverOKBtn_Click" Background="#FF606272" BorderBrush="{x:Null}" Foreground="White" FontWeight="Bold" FontSize="20" Grid.Row="1">OK</Button>
+                                <Button x:Name="serverOKBtn" Margin="30,130,30,10" Click="serverOKBtn_Click" Background="#FF606272" BorderBrush="{x:Null}" Foreground="White" FontWeight="Bold" FontSize="20" Grid.Row="1" Style="{StaticResource MaterialDesignFlatMidBgButton}">OK</Button>
                             </Grid>
 
                             <Grid x:Name="serverAddPopup" Margin="217,87,191,111" Grid.ColumnSpan="2" Background="#FF606272" Visibility="Hidden">
@@ -159,15 +159,15 @@
                                 <ComboBox x:Name="serverAddVersion" Width="300" Height="30" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0, 150, 30, 0" FontSize="15" />
                                 <CheckBox x:Name="serverAddType" Width="300" Height="30" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0, 190, 30, 0" Content="Forge" Foreground="White" FontWeight="Bold" FontSize="15" />
 
-                                <Button x:Name="serverAddBtnAdd" Content="Add" Width="200" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="30" Background="#FF606272" Foreground="White" FontWeight="Bold" FontSize="15" Click="serverAddBtnAdd_Click" />
-                                <Button x:Name="serverAddBtnCancel" Content="Cacel" Width="200" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="30" Background="#FF606272" Foreground="White" FontWeight="Bold" FontSize="15" Click="serverAddBtnCancel_Click" />
+                                <Button x:Name="serverAddBtnAdd" Content="Add" Width="200" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="30" Background="#FF606272" Foreground="White" FontWeight="Bold" FontSize="15" Click="serverAddBtnAdd_Click" Style="{StaticResource MaterialDesignFlatMidBgButton}" />
+                                <Button x:Name="serverAddBtnCancel" Content="Cacel" Width="200" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="30" Background="#FF606272" Foreground="White" FontWeight="Bold" FontSize="15" Click="serverAddBtnCancel_Click" Style="{StaticResource MaterialDesignFlatMidBgButton}" />
                             </Grid>
 
                             <Grid x:Name="versionPopup" Margin="266,150,275,150" Grid.ColumnSpan="2" Background="#FF606272" Visibility="Hidden">
-                                <ComboBox x:Name="VerCbBox" Margin="30,30,30,100" FontSize="20" VerticalContentAlignment="Center">
+                                <ComboBox x:Name="VerCbBox" Margin="30,30,30,100" FontSize="20" VerticalContentAlignment="Center" >
 
                                 </ComboBox>
-                                <Button x:Name="versionOKBtn" Margin="30,130,30,10" Click="versionOKBtn_Click" Background="#FF606272" BorderBrush="{x:Null}" Foreground="White" FontWeight="Bold" FontSize="20">OK</Button>
+                                <Button x:Name="versionOKBtn" Margin="30,130,30,10" Click="versionOKBtn_Click" Background="#FF606272" BorderBrush="{x:Null}" Foreground="White" FontWeight="Bold" FontSize="20" Style="{StaticResource MaterialDesignFlatMidBgButton}">OK</Button>
                             </Grid>
                         </Grid>
                     </Border>
