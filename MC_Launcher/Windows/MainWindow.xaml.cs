@@ -246,7 +246,7 @@ namespace MC_Launcher
         private void serverAddBtnCancel_Click(object sender, RoutedEventArgs e)
         {
             serverAddIP.Text = "";
-            serverAddPort.Text = "";
+            serverAddPort.Text = "25565";
             serverAddName.Text = "";
             serverAddVersion.Text = "";
             serverAddType.IsChecked = false;
@@ -290,7 +290,7 @@ namespace MC_Launcher
             UpdateServerList();
 
             serverAddIP.Text = "";
-            serverAddPort.Text = "";
+            serverAddPort.Text = "25565";
             serverAddName.Text = "";
             serverAddVersion.Text = "";
             serverAddType.IsChecked = false;
