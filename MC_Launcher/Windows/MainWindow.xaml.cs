@@ -42,6 +42,8 @@ namespace MC_Launcher
 
         public Server selectedServer;
 
+        private Source.Global G = new Source.Global();
+
         public int MAX_RAM = 0;
 
         #endregion
@@ -110,6 +112,8 @@ namespace MC_Launcher
 
                 //    MessageBox.Show("ID와 Password를 확인해주세요..", "LOGIN", MessageBoxButton.OK);
 
+                //    G.InfoLog("ID 또는 PWD 틀림");
+
                 //    return;
                 //}
                 //else imgSkin.Source = api.GetSkinFromAPI(mine.UUID);
@@ -117,10 +121,14 @@ namespace MC_Launcher
                 Storyboard sb = Resources["LoginBtn"] as Storyboard;
                 sb.Begin(SlidePanel);
                 loadingLogin.Visibility = Visibility.Hidden;
+
+                G.InfoLog("Login Success");
             }
             else
             {
                 MessageBox.Show("ID와 Password를 입력해주세요.", "LOGIN", MessageBoxButton.OK);
+
+                G.InfoLog("ID PWD 입력 필요");
 
                 return;
             }
@@ -172,10 +180,12 @@ namespace MC_Launcher
             //{
             //    //MessageBox.Show("서버를 선택 해주세요.", "GAME", MessageBoxButton.OK);
             //    p = mine.Start("");
+            //    G.InfoLog("Offline Mode Start");
             //}
             //else
             //{
             //    p = mine.Start(selectedServer);
+            //    G.InfoLog("Server Direct Connect Mode Start");
             //}
             
             //startBtn.IsEnabled = false;
@@ -599,6 +609,8 @@ namespace MC_Launcher
             config.Add($"{PropertySettings.MC_RAM}={_mcRam}");
 
             File.WriteAllLines($"{AppDomain.CurrentDomain.BaseDirectory}\\config.txt", config);
+
+            G.InfoLog("Save Config Success");
         }
 
         public void LoadConfig()
@@ -653,6 +665,8 @@ namespace MC_Launcher
                 IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
                 invokeProv.Invoke();
             }
+
+            G.InfoLog("Load Config Success");
         }
 
         public class SafeNativeMethods
@@ -781,8 +795,16 @@ namespace MC_Launcher
         {
             foreach(string version in mine.GetAllReleaseVersion())
             {
-                serverAddVersion.Items.Add(version);
-                VerCbBox.Items.Add(version);
+                TextBlock tVersion = new TextBlock();
+                tVersion.Text = version;
+                tVersion.Background = Brushes.White;
+
+                TextBlock tVersion2 = new TextBlock();
+                tVersion2.Text = version;
+                tVersion2.Background = Brushes.White;
+
+                serverAddVersion.Items.Add(tVersion);
+                VerCbBox.Items.Add(tVersion2);
             }
         }
 
@@ -799,6 +821,8 @@ namespace MC_Launcher
             string name = e.FileName;
 
             string msg = $"Download({progress}/{total})... {{{name}}}";
+
+            G.InfoLog(msg);
         }
 
         #endregion

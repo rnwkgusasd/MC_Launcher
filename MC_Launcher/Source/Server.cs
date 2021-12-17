@@ -11,6 +11,8 @@ namespace MC_Launcher
     {
         private List<Server> serverList = new List<Server>();
 
+        private Source.Global G = new Source.Global();
+
         public ServerManager() { }
 
         public bool SaveServers()
@@ -26,10 +28,14 @@ namespace MC_Launcher
             {
                 File.WriteAllLines($"{AppDomain.CurrentDomain.BaseDirectory}\\svlst.txt", list);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                G.ErrorLog(ex.ToString());
+
                 return false;
             }
+
+            G.InfoLog("Save Server List Success");
             
             return true;
         }
@@ -47,8 +53,10 @@ namespace MC_Launcher
                 
                 list = File.ReadAllLines($"{AppDomain.CurrentDomain.BaseDirectory}\\svlst.txt").ToList();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                G.ErrorLog(ex.ToString());
+
                 return false;
             }
 
@@ -60,6 +68,8 @@ namespace MC_Launcher
             {
                 serverList.Add(new Server(item));
             }
+
+            G.InfoLog("Load Server List Success");
 
             return true;
         }

@@ -97,6 +97,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Source\AccessAPI.cs" />
+    <Compile Include="Source\Global.cs" />
     <Compile Include="Source\Minecraft.cs" />
     <Compile Include="Source\Server.cs" />
     <Compile Include="Windows\MainWindow.xaml.cs">
