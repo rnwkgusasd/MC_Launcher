@@ -203,8 +203,6 @@
                                             <TextBlock FontSize="20" Height="30" Margin="10,111,394,209">RAM</TextBlock>
                                             <TextBlock FontSize="20" Height="30" Margin="177,118,246,202">Gb</TextBlock>
                                             <TextBox x:Name="mcRam" TextWrapping="Wrap" Margin="63,111,280,202" Background="White" TextAlignment="Right" TextChanged="mcRam_TextChanged" FontSize="20"/>
-                                            <TextBlock FontSize="20" Margin="10,161,361,155">Optifine</TextBlock>
-                                            <CheckBox x:Name="mcOptifine" Margin="100,170,335,162"></CheckBox>
                                         </Grid>
                                     </TabItem>
                                 </TabControl>
