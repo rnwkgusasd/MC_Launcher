@@ -144,11 +144,32 @@ namespace MC_Launcher.Source
 
             var lv = new LocalVersionLoader(game).GetVersionMetadatas();
 
-            var findVersion = lv.GetVersion(_version);
+            MVersion findVersion = null;
+
+            try
+            {
+                findVersion = lv.GetVersion(_version);
+            }
+            catch (KeyNotFoundException)
+            {
+
+            }
+            
+
+            //var findVersion = lv.GetVersion(_version);
 
             if (findVersion == null)
             {
-                var findMVersion = lv.GetVersionMetadata(_version);
+                MVersionMetadata findMVersion = null;
+
+                try
+                {
+                    findMVersion = lv.GetVersionMetadata(_version);
+                }
+                catch (KeyNotFoundException)
+                {
+
+                }
 
                 if (findMVersion != null)
                 {
@@ -169,6 +190,15 @@ namespace MC_Launcher.Source
                 }
             }
 
+            try
+            {
+                findVersion = lv.GetVersion(_version);
+            }
+            catch (KeyNotFoundException)
+            {
+                return null;
+            }
+
             var launchOption = new MLaunchOption
             {
                 MaximumRamMb = ram,
@@ -179,7 +209,7 @@ namespace MC_Launcher.Source
                 GameLauncherVersion = "1.0"
             };
 
-            var process = launcher.CreateProcess(launchOption);
+            Process process = launcher.CreateProcess(launchOption);
             process.Start();
 
             return process;

@@ -106,17 +106,17 @@ namespace MC_Launcher
             {
                 loadingLogin.Visibility = Visibility.Visible;
 
-                //if (!mine.Login(ID.Text, PWD.Password))
-                //{
-                //    loadingLogin.Visibility = Visibility.Hidden;
+                if (!mine.Login(ID.Text, PWD.Password))
+                {
+                    loadingLogin.Visibility = Visibility.Hidden;
 
-                //    MessageBox.Show("ID와 Password를 확인해주세요..", "LOGIN", MessageBoxButton.OK);
+                    MessageBox.Show("ID와 Password를 확인해주세요..", "LOGIN", MessageBoxButton.OK);
 
-                //    G.InfoLog("ID 또는 PWD 틀림");
+                    G.InfoLog("ID 또는 PWD 틀림");
 
-                //    return;
-                //}
-                //else imgSkin.Source = api.GetSkinFromAPI(mine.UUID);
+                    return;
+                }
+                else imgSkin.Source = api.GetSkinFromAPI(mine.UUID);
 
                 Storyboard sb = Resources["LoginBtn"] as Storyboard;
                 sb.Begin(SlidePanel);
@@ -174,25 +174,25 @@ namespace MC_Launcher
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            //mine.RAM = int.Parse(mcRam.Text);
-            
-            //if(selectedServer == null)
-            //{
-            //    //MessageBox.Show("서버를 선택 해주세요.", "GAME", MessageBoxButton.OK);
-            //    p = mine.Start("");
-            //    G.InfoLog("Offline Mode Start");
-            //}
-            //else
-            //{
-            //    p = mine.Start(selectedServer);
-            //    G.InfoLog("Server Direct Connect Mode Start");
-            //}
-            
-            //startBtn.IsEnabled = false;
+            mine.RAM = int.Parse(mcRam.Text);
 
-            //t = new System.Timers.Timer(500);
-            //t.Elapsed += ProcessFunction;
-            //t.Start();
+            if (selectedServer == null)
+            {
+                //MessageBox.Show("서버를 선택 해주세요.", "GAME", MessageBoxButton.OK);
+                p = mine.Start(VerCbBox.Text);
+                G.InfoLog("Offline Mode Start");
+            }
+            else
+            {
+                p = mine.Start(selectedServer);
+                G.InfoLog("Server Direct Connect Mode Start");
+            }
+
+            startBtn.IsEnabled = false;
+
+            t = new System.Timers.Timer(500);
+            t.Elapsed += ProcessFunction;
+            t.Start();
         }
 
         private void serverBtn_Click(object sender, RoutedEventArgs e)

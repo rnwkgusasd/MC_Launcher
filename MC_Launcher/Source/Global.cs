@@ -18,14 +18,14 @@ namespace MC_Launcher.Source
 
         public void ErrorLog(string message)
         {
-            string msg = $"[{DateTime.Now.ToString("HH:mm:ss")}][{LOG_TYPE.ERROR}] : {message}";
+            string msg = $"[{DateTime.Now.ToString("HH:mm:ss")}][{LOG_TYPE.ERROR}] : {message}\n";
 
             File.AppendAllText(LOG_PATH, msg);
         }
 
         public void InfoLog(string message)
         {
-            string msg = $"[{DateTime.Now.ToString("HH:mm:ss")}][{LOG_TYPE.INFO}] : {message}";
+            string msg = $"[{DateTime.Now.ToString("HH:mm:ss")}][{LOG_TYPE.INFO}] : {message}\n";
 
             File.AppendAllText(LOG_PATH, msg);
         }
