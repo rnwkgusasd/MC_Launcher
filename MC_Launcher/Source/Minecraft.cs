@@ -209,8 +209,13 @@ namespace MC_Launcher.Source
                 GameLauncherVersion = "1.0"
             };
 
-            Process process = launcher.CreateProcess(launchOption);
+            MLaunch launch = new MLaunch(launchOption);
+            var process = launch.GetProcess();
+
             process.Start();
+
+            //Process process = launcher.CreateProcess(launchOption);
+            //process.Start();
 
             return process;
         }
