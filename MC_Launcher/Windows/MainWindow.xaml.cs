@@ -176,6 +176,8 @@ namespace MC_Launcher
         {
             mine.RAM = int.Parse(mcRam.Text);
 
+            MoveMods();
+
             if (selectedServer == null)
             {
                 //MessageBox.Show("서버를 선택 해주세요.", "GAME", MessageBoxButton.OK);
@@ -823,6 +825,35 @@ namespace MC_Launcher
             string msg = $"Download({progress}/{total})... {{{name}}}";
 
             G.InfoLog(msg);
+        }
+
+        public void MoveMods()
+        {
+            DirectoryInfo Dir = new DirectoryInfo(mine.GetDefaultPath() + "\\mods");
+
+            if (Dir.Exists)
+            {
+                Dir.Delete(true);
+                Thread.Sleep(100);
+                Dir.Create();
+            }
+            else Dir.Create();
+
+            DirectoryInfo mods = new DirectoryInfo(Environment.CurrentDirectory + "\\mods");
+
+            if (!mods.Exists)
+            {
+                mods.Create();
+
+                return;
+            }
+
+            FileInfo[] mods_list = mods.GetFiles();
+
+            foreach(FileInfo mod in mods_list)
+            {
+                mod.MoveTo(Dir.FullName);
+            }
         }
 
         #endregion
