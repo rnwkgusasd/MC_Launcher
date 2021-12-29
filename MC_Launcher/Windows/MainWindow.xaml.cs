@@ -813,6 +813,10 @@ namespace MC_Launcher
         public void Download_Progress_Change(object sender, ProgressChangedEventArgs e)
         {
             int percent = e.ProgressPercentage;
+
+            string msg = $"Download... {percent}%";
+
+            G.InfoLog(msg);
         }
 
         public void Download_File_Change(DownloadFileChangedEventArgs e)
